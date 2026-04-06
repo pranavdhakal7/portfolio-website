@@ -169,7 +169,7 @@ export default function FishCat() {
                     scoreEl.textContent = `🐟 Fed: ${fedCount}`;
 
                     // Eating GIF with transparent background
-                    catEl.src = 'https://media.gifer.com/SKbS.gif';
+                    catEl.src = 'https://www.sigstick.com/pack/KvVUoOpOBZ6y2A4ZYg8o-pusheen';
                     for (let p = 0; p < 6; p++) spawnParticle(cat.x + 40, cat.y + 10, '✨');
                     container.removeChild(f.el);
                     fallingItems.splice(i, 1);
