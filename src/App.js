@@ -23,7 +23,6 @@ import ScrollObserver from './components/ScrollObserver';
 import Abstract3DShapes from './components/Abstract3DShapes';
 import CustomCursor from './components/CustomCursor';
 import Pet from './components/Pet';
-import Cat from './components/Cat';
 import './styles/Cursor.css';
 
 function App() {
@@ -43,7 +42,7 @@ function App() {
                 <Contact id="contact" />
             </ScrollObserver>
             <Footer />
-            <Cat />
+            <Pet />
         </div>
     );
 }
