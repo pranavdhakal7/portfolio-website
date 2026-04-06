@@ -1,0 +1,305 @@
+/* ============================================
+   WORK — Compact Card Grid (Showcase Style)
+   ============================================ */
+
+.work {
+    padding: 12rem 9%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Headline ── */
+.work-headline {
+    font-size: clamp(3.6rem, 6vw, 6.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    color: var(--text-dark);
+    margin-bottom: 4rem;
+}
+
+.work-headline span {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Category filter ── */
+.work-cats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 4rem;
+}
+
+.work-cat {
+    padding: 0.6rem 1.6rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    background: rgba(0, 238, 255, 0.05);
+    border: 1px solid rgba(0, 238, 255, 0.14);
+    color: var(--text-light);
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: "Space Grotesk", sans-serif;
+}
+
+.work-cat:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.work-cat.active {
+    background: var(--gradient-primary);
+    color: #000;
+    border-color: transparent;
+    box-shadow: var(--shadow-glow);
+}
+
+/* ══════════════════════════════════════════
+   COMPACT CARD GRID
+   4 columns on desktop → 2 on mobile
+══════════════════════════════════════════ */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.8rem;
+    margin-bottom: 5rem;
+}
+
+/* ── Single card ── */
+.proj-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+}
+
+/* Top accent line reveals on hover */
+.proj-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.proj-card:hover {
+    border-color: rgba(0, 238, 255, 0.35);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-glow), 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.proj-card:hover::after {
+    opacity: 1;
+}
+
+/* ── Thumbnail ── */
+.proj-thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: rgba(0, 238, 255, 0.03);
+}
+
+.proj-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    filter: saturate(0.85);
+}
+
+.proj-card:hover .proj-thumb img {
+    transform: scale(1.07);
+    filter: saturate(1.1);
+}
+
+/* Overlay "Open ↗" */
+.proj-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 10, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    backdrop-filter: blur(2px);
+}
+
+.proj-card:hover .proj-overlay {
+    opacity: 1;
+}
+
+.proj-open {
+    background: var(--gradient-primary);
+    color: #000;
+    font-size: 1.3rem;
+    font-weight: 800;
+    padding: 0.7rem 1.8rem;
+    border-radius: 9999px;
+    letter-spacing: 0.5px;
+    transform: translateY(6px);
+    transition: transform 0.25s ease 0.05s;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+.proj-card:hover .proj-open {
+    transform: translateY(0);
+}
+
+/* ── Info block ── */
+.proj-info {
+    padding: 1.4rem 1.6rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.proj-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+.proj-name {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -0.2px;
+    line-height: 1.25;
+}
+
+.proj-stars {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-light);
+    white-space: nowrap;
+    opacity: 0.75;
+    flex-shrink: 0;
+}
+
+.proj-slug {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    opacity: 0.7;
+}
+
+/* Tech tags */
+.proj-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+}
+
+.proj-tag {
+    padding: 0.3rem 0.9rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    background: rgba(0, 238, 255, 0.06);
+    color: var(--primary-color);
+    border: 1px solid rgba(0, 238, 255, 0.15);
+    transition: var(--transition);
+}
+
+.proj-card:hover .proj-tag {
+    background: rgba(0, 238, 255, 0.10);
+    border-color: rgba(0, 238, 255, 0.28);
+}
+
+/* ── GitHub CTA ── */
+.work-cta {
+    text-align: center;
+}
+
+.work-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.2rem 3.2rem;
+    font-size: 1.45rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    background: transparent;
+    color: var(--primary-color);
+    border: 1.5px solid var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+    font-family: "Space Grotesk", sans-serif;
+}
+
+.work-cta-btn:hover {
+    background: rgba(0, 238, 255, 0.07);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-3px);
+}
+
+/* ── No projects message ── */
+.no-projects-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-light);
+    font-size: 1.4rem;
+    opacity: 0.8;
+}
+
+.no-projects-message strong {
+    color: var(--primary-color);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1200px) {
+    .work-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 800px) {
+    .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.4rem;
+    }
+}
+
+@media (max-width: 680px) {
+    .work {
+        padding: 8rem 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .proj-info {
+        padding: 1.2rem;
+    }
+
+    .proj-name {
+        font-size: 1.4rem;
+    }
+}

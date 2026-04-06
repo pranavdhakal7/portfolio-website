@@ -1,0 +1,90 @@
+.sticky-note-container {
+    position: fixed;
+    width: 280px;
+    min-height: 280px;
+    background: #fdfd96;
+    /* classic pale yellow sticky note */
+    color: #333;
+    padding: 2rem;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4), inset 0 -20px 20px rgba(0, 0, 0, 0.05);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    transform: rotate(-2deg);
+    cursor: grab;
+    z-index: 100;
+    user-select: none;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    top: 20px;
+    right: 20px;
+    left: auto;
+}
+
+.sticky-note-container:active {
+    cursor: grabbing;
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.6), inset 0 -20px 20px rgba(0, 0, 0, 0.05);
+    transform: rotate(-2deg) scale(1.02);
+}
+
+.sticky-pin {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 36px;
+    background: radial-gradient(circle at 30% 30%, #ff6b6b, #c92a2a);
+    border-radius: 50%;
+    box-shadow: inset -3px -3px 8px rgba(0, 0, 0, 0.4), 3px 6px 6px rgba(0, 0, 0, 0.5);
+}
+
+.sticky-pin::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+}
+
+.sticky-pin::after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: 17px;
+    width: 3px;
+    height: 18px;
+    background: #555;
+    z-index: -1;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.sticky-content h3 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    border-bottom: 2px dashed #aaa;
+    padding-bottom: 10px;
+    font-weight: 800;
+}
+
+.sticky-content p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.sticky-content del {
+    text-decoration-color: red;
+    text-decoration-thickness: 2px;
+}
+
+.sticky-content h3 {
+    color: #000000;
+}
+
+.sticky-content p {
+    color: #000000;
+}

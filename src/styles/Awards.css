@@ -1,0 +1,221 @@
+/* ============================================
+   AWARDS — Editorial Numbered List
+   ============================================ */
+
+.awards {
+    padding: 12rem 9%;
+    position: relative;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .awards {
+        overflow-x: visible;
+        overflow-y: hidden;
+    }
+}
+
+.awards-headline {
+    font-size: clamp(3.6rem, 6vw, 6.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    color: var(--text-dark);
+    margin-bottom: 7rem;
+}
+
+.awards-headline span {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Award rows ── */
+.awards-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 2.5rem;
+    overflow-x: visible;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Enable horizontal scrolling on mobile */
+@media (max-width: 768px) {
+    .awards-grid {
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        scroll-snap-type: x mandatory;
+        scroll-padding: 0 5%;
+    }
+
+    .award-item {
+        scroll-snap-align: start;
+        flex: 0 0 auto;
+        width: 85vw;
+        max-width: 300px;
+        min-width: 0;
+    }
+}
+
+.award-item {
+    flex: 1 1 0%;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    border: 1px solid rgba(0, 238, 255, 0.08);
+    border-radius: var(--border-radius-lg);
+    background: rgba(8, 10, 28, 0.4);
+    transition: all 0.28s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+
+.award-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 238, 255, 0.03);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    z-index: 0;
+}
+
+.award-item:hover::before {
+    opacity: 1;
+}
+
+.award-item:hover .award-arrow {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+    color: var(--primary-color);
+}
+
+.award-item:hover .award-emoji {
+    transform: scale(1.15) rotate(5deg);
+}
+
+/* Sequential number */
+.award-num {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: rgba(0, 238, 255, 0.30);
+    font-family: "Space Grotesk", monospace;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Emoji */
+.award-emoji {
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* Body */
+.award-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.award-tag {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    opacity: 0.75;
+}
+
+.award-title {
+    font-size: clamp(1.8rem, 2.2vw, 2.4rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+}
+
+.award-meta {
+    font-size: 1.35rem;
+    color: var(--text-light);
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Hover arrow */
+.award-arrow {
+    font-size: 2rem;
+    font-weight: 300;
+    color: rgba(0, 238, 255, 0.2);
+    opacity: 0;
+    transform: translateX(-8px) translateY(8px);
+    transition: all 0.25s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .awards {
+        padding: 8rem 5%;
+    }
+
+    .award-item {
+        padding: 1.8rem;
+        min-width: 180px;
+    }
+
+    .award-arrow {
+        display: none;
+    }
+
+    .award-title {
+        font-size: 1.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .awards-grid {
+        gap: 1.5rem;
+        scroll-padding: 0 5%;
+    }
+
+    .award-item {
+        padding: 1.5rem;
+        width: 80vw;
+        max-width: 280px;
+        min-width: 0;
+    }
+
+    .award-num {
+        display: none;
+    }
+
+    .award-emoji {
+        font-size: 2.4rem;
+    }
+
+    .award-title {
+        font-size: 1.7rem;
+    }
+
+    .award-meta {
+        font-size: 1.2rem;
+    }
+}

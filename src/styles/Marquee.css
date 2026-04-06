@@ -1,0 +1,58 @@
+/* ============================================
+   MARQUEE / TICKER STRIP
+   Godly.website signature infinite scroll
+   ============================================ */
+
+.marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    /* Fade edges */
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image:         linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+    padding: 1.2rem 0;
+    border-top:    1px solid rgba(0,238,255,0.08);
+    border-bottom: 1px solid rgba(0,238,255,0.08);
+}
+
+.marquee-track {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    animation: marquee-scroll 35s linear infinite;
+}
+
+.marquee-reverse .marquee-track {
+    animation-direction: reverse;
+}
+
+.marquee-item {
+    display: inline-block;
+    padding: 0 4rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(155,170,207,0.55);
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+
+.marquee-item:hover {
+    color: var(--primary-color);
+}
+
+@keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* Hero bottom marquee container */
+.hero-marquee {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}

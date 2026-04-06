@@ -1,0 +1,367 @@
+/* ============================================
+   ABOUT — Text Left · Photo + Facts Right
+   ============================================ */
+
+.about {
+    padding: 12rem 9%;
+    display: grid;
+    grid-template-columns: 1fr 40rem;
+    gap: 8rem;
+    align-items: start;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ══════════════════════════════════════════
+   LEFT COLUMN
+══════════════════════════════════════════ */
+.about-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+/* Mega headline */
+.about-headline {
+    font-size: clamp(3.6rem, 5.5vw, 6.4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    color: var(--text-dark);
+    margin: 0.8rem 0 0;
+}
+
+.about-headline em {
+    font-style: normal;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Bio */
+.about-bio {
+    font-size: clamp(1.7rem, 1.9vw, 2rem);
+    line-height: 1.8;
+    color: var(--text-light);
+    max-width: 56rem;
+}
+
+/* ── Expertise "What I Do" ── */
+.about-expertise { display: flex; flex-direction: column; gap: 1.2rem; }
+
+.expertise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.expertise-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.5rem 1.6rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0,238,255,0.09);
+    border-radius: 14px;
+    transition: var(--transition);
+}
+
+.expertise-card:hover {
+    border-color: rgba(0,238,255,0.28);
+    background: rgba(0,238,255,0.04);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glow);
+}
+
+.expertise-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.expertise-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0 0 0.3rem;
+    letter-spacing: -0.1px;
+}
+
+.expertise-desc {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.75;
+}
+
+/* ── Stat strip ── */
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid rgba(0,238,255,0.12);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px);
+}
+
+.about-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.4rem 1rem;
+    border-right: 1px solid rgba(0,238,255,0.10);
+    transition: background 0.25s;
+}
+
+.about-stat:last-child { border-right: none; }
+.about-stat:hover { background: rgba(0,238,255,0.05); }
+
+.about-stat-num {
+    font-size: clamp(2.8rem, 3.5vw, 4rem);
+    font-weight: 900;
+    line-height: 1;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.4rem;
+}
+
+.about-stat-label {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* ── Stack pills ── */
+.stack-label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 1.2rem;
+    opacity: 0.6;
+}
+
+.stack-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+.stack-pill {
+    padding: 0.6rem 1.4rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    background: rgba(0,238,255,0.06);
+    border: 1px solid rgba(0,238,255,0.17);
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.stack-pill:hover {
+    background: var(--gradient-primary);
+    color: #000;
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+/* ── CTAs ── */
+.about-ctas {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.about-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1.15rem 2.6rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+.about-btn-primary {
+    background: var(--gradient-primary);
+    color: #000;
+    box-shadow: var(--shadow-glow);
+}
+
+.about-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glow-accent);
+}
+
+.about-btn-ghost {
+    background: transparent;
+    color: var(--text-dark);
+    border: 1.5px solid rgba(255,255,255,0.18);
+}
+
+.about-btn-ghost:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* ══════════════════════════════════════════
+   RIGHT COLUMN — Photo + Facts
+══════════════════════════════════════════ */
+.about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: sticky;
+    top: 10rem;
+}
+
+/* Photo wrapper */
+.about-photo-wrap {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.about-photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+    border-radius: 24px;
+    filter: saturate(0.88);
+    transition: filter 0.5s ease, transform 0.6s ease;
+}
+
+.about-photo-wrap:hover .about-photo {
+    filter: saturate(1.1);
+    transform: scale(1.03);
+}
+
+/* Available badge */
+.photo-badge {
+    position: absolute;
+    bottom: 1.4rem;
+    left: 1.4rem;
+    background: rgba(4,5,16,0.82);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0,238,255,0.22);
+    border-radius: 9999px;
+    padding: 0.65rem 1.3rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 8px rgba(34,197,94,0.9);
+    animation: badge-pulse 2s infinite;
+    flex-shrink: 0;
+}
+
+@keyframes badge-pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.6; transform: scale(1.4); }
+}
+
+/* ── Facts grid below photo ── */
+.about-facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.fact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0,238,255,0.09);
+    border-radius: 14px;
+    padding: 1.3rem 1.4rem;
+    transition: var(--transition);
+}
+
+.fact-item:hover {
+    border-color: rgba(0,238,255,0.28);
+    background: rgba(0,238,255,0.04);
+    transform: translateY(-2px);
+}
+
+.fact-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.fact-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+}
+
+.fact-label {
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-light);
+    opacity: 0.6;
+}
+
+.fact-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+    .about { grid-template-columns: 1fr 34rem; gap: 5rem; }
+}
+
+@media (max-width: 860px) {
+    .about {
+        grid-template-columns: 1fr;
+        gap: 5rem;
+        padding: 8rem 5%;
+    }
+    .about-right { position: static; order: -1; max-width: 42rem; margin: 0 auto; }
+    .about-facts  { grid-template-columns: repeat(2, 1fr); }
+    .about-stats  { grid-template-columns: repeat(4, 1fr); }
+    .expertise-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .about-facts    { grid-template-columns: 1fr 1fr; }
+    .about-stats    { grid-template-columns: repeat(2, 1fr); }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .about-ctas     { flex-direction: column; }
+    .about-btn      { justify-content: center; }
+}

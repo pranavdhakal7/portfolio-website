@@ -1,0 +1,348 @@
+/* SkillsEducation.css */
+.skills-education {
+    padding: 5rem 9%;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.skills-education .heading {
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 4rem;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.skills-education .heading i {
+    color: #00eeff;
+    margin-right: 1rem;
+}
+
+.skills-education .heading span {
+    color: #00eeff;
+}
+
+.combined-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.skills-box,
+.education-box {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid rgba(0, 238, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 238, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.skills-box::before,
+.education-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #00eeff, #0077ff);
+}
+
+.skills-box:hover,
+.education-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 238, 255, 0.2);
+    border-color: rgba(0, 238, 255, 0.3);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(0, 238, 255, 0.2);
+}
+
+.section-header i {
+    font-size: 2.5rem;
+    color: #00eeff;
+    margin-right: 1rem;
+}
+
+.section-header h3 {
+    font-size: 2.2rem;
+    color: #fff;
+    margin: 0;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-item {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.skill-item:hover {
+    background: rgba(0, 238, 255, 0.15);
+    border-color: #00eeff;
+    transform: scale(1.05);
+}
+
+.skill-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.skill-name {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    display: block;
+}
+
+/* Education Content */
+.education-content {
+    color: #fff;
+}
+
+.university-info h4 {
+    font-size: 1.8rem;
+    color: #00eeff;
+    margin-bottom: 0.5rem;
+}
+
+.degree {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 0.5rem;
+}
+
+.duration {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 2rem;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 238, 255, 0.1);
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* Highlight Stats */
+.highlight-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, rgba(0, 238, 255, 0.1), rgba(0, 119, 255, 0.1));
+    border-radius: 15px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.stat-card.gpa {
+    border-color: #00eeff;
+}
+
+.stat-card.scholarship {
+    border-color: #ff00ff;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.stat-icon i {
+    font-size: 1.8rem;
+}
+
+.stat-card.gpa .stat-icon i {
+    color: #00eeff;
+}
+
+.stat-card.scholarship .stat-icon i {
+    color: #ff00ff;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+}
+
+.stat-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+}
+
+.stat-card.gpa .stat-value {
+    color: #00eeff;
+}
+
+.stat-card.scholarship .stat-value {
+    color: #ff00ff;
+}
+
+.stat-sub {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 0.3rem;
+}
+
+/* Coursework */
+.coursework-section {
+    margin-top: 2rem;
+}
+
+.coursework-section h5 {
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.coursework-section h5::before {
+    content: '';
+    width: 30px;
+    height: 3px;
+    background: #00eeff;
+    margin-right: 10px;
+}
+
+.coursework-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.course-tag {
+    background: rgba(0, 238, 255, 0.15);
+    color: #00eeff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(0, 238, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.course-tag:hover {
+    background: rgba(0, 238, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .combined-container {
+        gap: 2rem;
+    }
+
+    .skills-box,
+    .education-box {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .combined-container {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-education .heading {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .skills-education {
+        padding: 4rem 5%;
+    }
+
+    .skills-education .heading {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .section-header h3 {
+        font-size: 1.8rem;
+    }
+
+    .highlight-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+
+    .skills-box,
+    .education-box {
+        padding: 1.5rem;
+    }
+
+    .stat-value {
+        font-size: 1.8rem;
+    }
+
+    .university-info h4 {
+        font-size: 1.5rem;
+    }
+}

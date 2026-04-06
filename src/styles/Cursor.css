@@ -1,0 +1,63 @@
+/* ============================================
+   CUSTOM CURSOR — Magnetic dot + ring
+   ============================================ */
+
+/* Hide the native cursor everywhere */
+*, *::before, *::after {
+    cursor: none !important;
+}
+
+/* Core dot — snaps instantly */
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00eeff;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 99999;
+    will-change: transform;
+    box-shadow: 0 0 10px rgba(0,238,255,0.8), 0 0 20px rgba(0,238,255,0.4);
+    transition: opacity 0.25s ease;
+}
+
+/* Trailing ring — lerps behind */
+.cursor-ring {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(0,238,255,0.55);
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 99998;
+    will-change: transform;
+    transition: opacity 0.25s ease,
+                width 0.3s ease,
+                height 0.3s ease,
+                border-color 0.3s ease,
+                background 0.3s ease;
+}
+
+/* Hover state — ring expands and fills with translucent glow */
+.cursor-dot.cursor-hover {
+    background: #8000ff;
+    transform: scale(1.8) !important;
+    box-shadow: 0 0 14px rgba(128,0,255,0.9);
+}
+
+.cursor-ring.cursor-hover {
+    width: 60px;
+    height: 60px;
+    border-color: rgba(128,0,255,0.5);
+    background: rgba(128,0,255,0.08);
+    margin-top: -10px;
+    margin-left: -10px;
+}
+
+/* Hide on small touch screens — no cursor needed */
+@media (hover: none) and (pointer: coarse) {
+    .cursor-dot, .cursor-ring { display: none; }
+    *, *::before, *::after { cursor: auto !important; }
+}

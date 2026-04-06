@@ -1,0 +1,489 @@
+/* ============================================
+   EDUCATION — Horizontal Row Layout
+   ============================================ */
+
+.education {
+    padding: 12rem 9%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Headline ── */
+.edu-headline {
+    font-size: clamp(3.6rem, 6vw, 6.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    color: var(--text-dark);
+    margin-bottom: 7rem;
+}
+
+.edu-headline span {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Timeline container ── */
+.edu-timeline {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    max-width: 1200px;
+    justify-content: space-between;
+}
+
+/* ── Single entry ── */
+.edu-entry {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    gap: 1.8rem;
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    padding: 2.5rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    transition: var(--transition);
+}
+
+.edu-entry:hover {
+    border-color: rgba(0, 238, 255, 0.35);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-glow), 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Period/Date header ── */
+.edu-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.edu-period {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-light);
+    letter-spacing: 0.2px;
+    line-height: 1.4;
+    white-space: nowrap;
+    background: rgba(0, 238, 255, 0.08);
+    padding: 0.5rem 1.2rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(0, 238, 255, 0.15);
+}
+
+.edu-line {
+    display: none;
+}
+
+/* ── Dot node (now at top) ── */
+.edu-dot {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+
+
+.edu-dot-inner {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 2px solid rgba(0, 238, 255, 0.28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: var(--shadow-glow);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+    transition: var(--transition);
+}
+
+/* Pulsing ring for active entry */
+.edu-entry--active .edu-dot-inner {
+    background: linear-gradient(135deg, rgba(0, 238, 255, 0.15), rgba(128, 0, 255, 0.10));
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-glow), 0 0 0 6px rgba(0, 238, 255, 0.08);
+}
+
+/* Remove vertical connector line */
+.edu-dot::after {
+    display: none;
+}
+
+/* ── Card content (now integrated into entry) ── */
+.edu-card {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    transition: none;
+    margin-top: 0;
+}
+
+.edu-card:hover {
+    border-color: transparent;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Card top row */
+.edu-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.edu-degree {
+    font-size: clamp(2.0rem, 2.4vw, 2.6rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+}
+
+.edu-institution {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.edu-institution i {
+    color: rgba(0, 238, 255, 0.5);
+    font-size: 1.2rem;
+}
+
+/* Institution with image */
+.edu-institution-with-image {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.edu-institution-image {
+    flex-shrink: 0;
+    width: 250px;
+    height: 250px;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 4px solid rgba(0, 238, 255, 0.5);
+    background: rgba(0, 0, 0, 0.3);
+    order: 2;
+    /* Move to right side */
+    padding: 6px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35), 0 0 0 2px rgba(0, 238, 255, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+}
+
+.edu-institution-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.edu-institution-image:hover img {
+    transform: scale(1.05);
+}
+
+.edu-institution-details {
+    flex: 1;
+    order: 1;
+    /* Keep text on left */
+}
+
+/* Ranking badge */
+.edu-ranking {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 9999px;
+    line-height: 1;
+}
+
+.edu-ranking i {
+    font-size: 0.9rem;
+}
+
+/* Description text */
+.edu-description {
+    margin-top: 1.2rem;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    opacity: 0.9;
+    max-width: 90%;
+}
+
+/* Stat cluster */
+.edu-stats {
+    display: flex;
+    gap: 1.6rem;
+    flex-shrink: 0;
+}
+
+.edu-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 238, 255, 0.05);
+    border: 1px solid rgba(0, 238, 255, 0.12);
+    border-radius: 12px;
+    padding: 1.2rem 1.8rem;
+    min-width: 7rem;
+    transition: var(--transition);
+}
+
+.edu-stat:hover {
+    background: rgba(0, 238, 255, 0.09);
+    border-color: rgba(0, 238, 255, 0.25);
+}
+
+.edu-stat-val {
+    font-size: 2.2rem;
+    font-weight: 900;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+}
+
+.edu-stat-lbl {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Course tags */
+.edu-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-bottom: 1.6rem;
+}
+
+.edu-tag {
+    padding: 0.45rem 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    background: rgba(0, 136, 255, 0.07);
+    color: var(--accent-color);
+    border: 1px solid rgba(0, 136, 255, 0.18);
+    transition: var(--transition);
+}
+
+.edu-tag:hover {
+    background: var(--gradient-accent);
+    color: #000;
+    border-color: transparent;
+}
+
+/* Achievement badges */
+.edu-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+.edu-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    background: rgba(0, 238, 255, 0.06);
+    color: var(--primary-color);
+    border: 1px solid rgba(0, 238, 255, 0.16);
+}
+
+.edu-badge i {
+    font-size: 0.9rem;
+    opacity: 0.75;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+    .edu-timeline {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .edu-timeline {
+        flex-direction: column;
+        gap: 3rem;
+        max-width: 600px;
+    }
+
+    .edu-entry {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+        padding: 2.5rem;
+    }
+
+    .edu-period {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 680px) {
+    .education {
+        padding: 8rem 5%;
+    }
+
+    .edu-timeline {
+        gap: 2.5rem;
+    }
+
+    .edu-entry {
+        padding: 2rem;
+    }
+
+    .edu-card-top {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .edu-institution-with-image {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1.5rem;
+    }
+
+    .edu-institution-image {
+        width: 120px;
+        height: 120px;
+        order: 2;
+        border-width: 3px;
+        padding: 4px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 238, 255, 0.1);
+        border-radius: 20px;
+    }
+
+    .edu-institution-details {
+        order: 1;
+    }
+
+    .edu-ranking {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+        margin-top: 0.6rem;
+    }
+
+    .edu-description {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        max-width: 100%;
+    }
+
+    .edu-stats {
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .edu-stat {
+        flex: 1;
+        min-width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .edu-headline {
+        margin-bottom: 4.5rem;
+    }
+
+    .edu-degree {
+        font-size: 1.9rem;
+    }
+
+    .edu-timeline {
+        gap: 2rem;
+    }
+
+    .edu-entry {
+        padding: 1.5rem;
+    }
+
+    .edu-institution-with-image {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .edu-institution-image {
+        width: 85px;
+        height: 85px;
+        order: 2;
+        border-width: 2px;
+        padding: 3px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 238, 255, 0.08);
+        border-radius: 18px;
+    }
+
+    .edu-institution-details {
+        order: 1;
+    }
+
+    .edu-institution {
+        font-size: 1.35rem;
+    }
+
+    .edu-ranking {
+        font-size: 1.05rem;
+        padding: 0.3rem 0.7rem;
+        margin-top: 0.5rem;
+    }
+
+    .edu-description {
+        font-size: 1.15rem;
+        margin-top: 0.8rem;
+        line-height: 1.5;
+    }
+
+    .edu-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .edu-stat {
+        width: 100%;
+    }
+}

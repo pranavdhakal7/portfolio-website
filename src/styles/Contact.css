@@ -1,0 +1,325 @@
+/* ============================================
+   CONTACT — Two-Column Statement + Form
+   ============================================ */
+
+.contact {
+    padding: 12rem 9%;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    align-items: stretch;
+    max-width: 1200px;
+}
+
+/* ══════════════════════════════════════════
+   RIGHT COLUMN — Contact Info (now on right)
+══════════════════════════════════════════ */
+.contact-left {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    position: sticky;
+    top: 12rem;
+    height: 100%;
+}
+
+.contact-headline {
+    font-size: clamp(3.8rem, 6vw, 6.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.contact-headline span {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.contact-blurb {
+    font-size: 1.65rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    max-width: 42rem;
+}
+
+/* ── Quick links ── */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid rgba(0, 238, 255, 0.10);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px);
+}
+
+.clink {
+    display: grid;
+    grid-template-columns: 3.6rem 1fr auto;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.6rem 1.8rem;
+    text-decoration: none;
+    color: var(--text-dark);
+    border-bottom: 1px solid rgba(0, 238, 255, 0.07);
+    transition: background 0.2s ease;
+}
+
+.clink:last-child {
+    border-bottom: none;
+}
+
+.clink:hover {
+    background: rgba(0, 238, 255, 0.04);
+}
+
+.clink:hover .clink-arrow {
+    color: var(--primary-color);
+    transform: translateX(2px) translateY(-2px);
+}
+
+.clink--no-link {
+    cursor: default;
+}
+
+.clink--no-link:hover {
+    background: transparent;
+}
+
+.clink-icon {
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 10px;
+    background: rgba(0, 238, 255, 0.08);
+    border: 1px solid rgba(0, 238, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+.clink-text {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.clink-arrow {
+    font-size: 1.5rem;
+    color: rgba(0, 238, 255, 0.3);
+    transition: all 0.2s ease;
+}
+
+/* ── Social buttons ── */
+.contact-socials {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.soc-btn {
+    width: 4.4rem;
+    height: 4.4rem;
+    border-radius: 12px;
+    background: rgba(0, 238, 255, 0.06);
+    border: 1px solid rgba(0, 238, 255, 0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.soc-btn:hover {
+    background: var(--gradient-primary);
+    color: #000;
+    border-color: transparent;
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+}
+
+/* ══════════════════════════════════════════
+   LEFT COLUMN — Form (now on left)
+══════════════════════════════════════════ */
+.contact-right {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 4rem;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+/* Top gradient bar */
+.contact-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-primary);
+}
+
+/* Form grid */
+.cform-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+    margin-bottom: 1.6rem;
+}
+
+.cform-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.cform-full {
+    grid-column: 1 / -1;
+}
+
+.cform-label {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.cform-input {
+    width: 100%;
+    padding: 1.3rem 1.6rem;
+    font-size: 1.5rem;
+    font-family: "Space Grotesk", "Inter", sans-serif;
+    background: rgba(0, 238, 255, 0.03);
+    border: 1.5px solid rgba(0, 238, 255, 0.12);
+    border-radius: 12px;
+    color: var(--text-dark);
+    outline: none;
+    transition: var(--transition);
+}
+
+.cform-input::placeholder {
+    color: var(--text-light);
+    opacity: 0.5;
+}
+
+.cform-input:focus {
+    border-color: var(--primary-color);
+    background: rgba(0, 238, 255, 0.05);
+    box-shadow: 0 0 0 3px rgba(0, 238, 255, 0.09);
+}
+
+.cform-textarea {
+    resize: vertical;
+    min-height: 14rem;
+    line-height: 1.7;
+}
+
+/* Submit */
+.cform-submit {
+    width: 100%;
+    padding: 1.4rem;
+    margin-top: 0.4rem;
+    font-size: 1.55rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    border-radius: 12px;
+    border: none;
+    background: var(--gradient-primary);
+    color: #000;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: "Space Grotesk", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    box-shadow: var(--shadow-glow);
+}
+
+.cform-submit:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow-accent);
+}
+
+.cform-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Messages */
+.cform-msg {
+    margin-top: 1.4rem;
+    padding: 1.2rem 1.6rem;
+    border-radius: 10px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.cform-msg--ok {
+    background: rgba(0, 238, 255, 0.06);
+    color: var(--primary-color);
+    border: 1px solid rgba(0, 238, 255, 0.20);
+}
+
+.cform-msg--err {
+    background: rgba(239, 68, 68, 0.06);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.22);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 5rem;
+    }
+
+    .contact-left {
+        position: static;
+    }
+
+    .contact-headline {
+        font-size: clamp(3.2rem, 6vw, 5rem);
+    }
+}
+
+@media (max-width: 680px) {
+    .contact {
+        padding: 8rem 5%;
+    }
+
+    .contact-right {
+        padding: 2.8rem 2.2rem;
+    }
+
+    .cform-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-right {
+        padding: 2.2rem 1.8rem;
+    }
+}

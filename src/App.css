@@ -1,0 +1,81 @@
+/* App.css — global overrides */
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #000008; }
+::-webkit-scrollbar-thumb { background: #0088ff; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #00eeff; }
+
+/* Selection */
+::selection { background: rgba(0,238,255,0.28); color: #fff; }
+
+/* Body */
+body {
+    background: #000008;
+    color: var(--text-dark);
+    font-family: "Space Grotesk", "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
+/* Glassmorphism sections */
+section {
+    position: relative;
+    z-index: 1;
+    background: rgba(5, 7, 18, 0.62);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,238,255,0.07);
+}
+
+/* Gradient text */
+.gradient-text {
+    background: linear-gradient(135deg, #00eeff 0%, #0088ff 40%, #8000ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: gradient-shift 4s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50%       { background-position: 100% 50%; }
+}
+
+/* Glow utility */
+.glow {
+    filter: drop-shadow(0 0 10px rgba(0,238,255,0.55));
+}
+
+/* Pulse */
+@keyframes matrix-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%       { transform: scale(1.02); opacity: 0.9;
+                text-shadow: 0 0 8px rgba(0,238,255,0.8); }
+}
+.matrix-pulse { animation: matrix-pulse 2s ease-in-out infinite; }
+
+/* Generic btn — fallback for components using .btn directly */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1.2rem 3rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: var(--border-radius-full, 9999px);
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: transparent;
+    color: var(--primary-color);
+    border: 1.5px solid var(--primary-color) !important;
+}
+.btn:hover {
+    transform: translateY(-3px);
+    background: rgba(0,238,255,0.10);
+    box-shadow: 0 0 20px rgba(0,238,255,0.35);
+}
+.btn:active { transform: translateY(-1px); }
