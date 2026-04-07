@@ -3,10 +3,10 @@
    ============================================ */
 
 .about {
-    padding: 12rem 9%;
+    padding: 8rem 9%;
     display: grid;
     grid-template-columns: 1fr 40rem;
-    gap: 8rem;
+    gap: 6rem;
     align-items: start;
     position: relative;
     overflow: hidden;

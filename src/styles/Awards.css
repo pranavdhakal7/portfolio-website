@@ -3,7 +3,7 @@
    ============================================ */
 
 .awards {
-    padding: 12rem 9%;
+    padding: 8rem 9%;
     position: relative;
     overflow: hidden;
 }
@@ -21,7 +21,7 @@
     line-height: 1.1;
     letter-spacing: -2px;
     color: var(--text-dark);
-    margin-bottom: 7rem;
+    margin-bottom: 4rem;
 }
 
 .awards-headline span {

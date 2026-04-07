@@ -3,7 +3,7 @@
    ============================================ */
 
 .contact {
-    padding: 12rem 9%;
+    padding: 8rem 9%;
     position: relative;
     overflow: hidden;
 }
@@ -11,7 +11,7 @@
 .contact-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8rem;
+    gap: 6rem;
     align-items: stretch;
     max-width: 1200px;
 }

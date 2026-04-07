@@ -24,7 +24,7 @@ import Abstract3DShapes from './components/Abstract3DShapes';
 import CustomCursor from './components/CustomCursor';
 import Pet from './components/Pet';
 import './styles/Cursor.css';
-
+import { Analytics } from "@vercel/analytics/react";
 function App() {
     return (
         <div className="App">

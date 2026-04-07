@@ -3,7 +3,7 @@
    ============================================ */
 
 .work {
-    padding: 12rem 9%;
+    padding: 8rem 9%;
     position: relative;
     overflow: hidden;
 }
@@ -15,7 +15,7 @@
     line-height: 1.1;
     letter-spacing: -2px;
     color: var(--text-dark);
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .work-headline span {
