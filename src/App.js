@@ -16,35 +16,41 @@ import Skills from './components/Skills';
 import Education from './components/Education';
 import Awards from './components/Awards';
 import Work from './components/Work';
-import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollObserver from './components/ScrollObserver';
 import Abstract3DShapes from './components/Abstract3DShapes';
 import CustomCursor from './components/CustomCursor';
+import Cat from './components/Cat';
 import Pet from './components/Pet';
 import './styles/Cursor.css';
 import { Analytics } from "@vercel/analytics/react";
+
 function App() {
+
     return (
-        <div className="App">
-            <CustomCursor />
-            <Abstract3DShapes />
-            <Navbar />
-            <ScrollObserver>
-                <Home id="home" />
-                <About id="about" />
-                <Skills id="skills" />
-                <Education id="education" />
-                <Experience id="experience" />
-                <Work id="work" />
-                <Awards id="awards" />
-                <Contact id="contact" />
-            </ScrollObserver>
-            <Footer />
-            <Pet />
+                <div className="App">
+                    <CustomCursor />
+                    <Abstract3DShapes />
+                    <Navbar />
+                    <ScrollObserver>
+                        <Home id="home" />
+                        <About id="about" />
+                        <Skills id="skills" />
+                        <Education id="education" />
+                        <Work id="work" />
+    {/* Awards and Contact in same screen when scrolled */}
+                <div id="awards-contact-screen" className="combined-section">
+                            <Awards id="awards" />
+                            <Contact id="contact" />
         </div>
-    );
+                    <Footer />
+        </ScrollObserver>
+                <Cat />
+                    <Pet />
+                    <Analytics />
+        </div>
+        );
 }
 
 export default App;
