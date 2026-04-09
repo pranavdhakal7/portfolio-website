@@ -9,6 +9,12 @@
         filter 1s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform, filter;
     filter: blur(2px);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 
 .section-visible {
@@ -310,19 +316,9 @@ html {
 }
 
 .section-visible {
-    animation: subtleFloat 20s infinite ease-in-out;
-}
-
-@keyframes subtleFloat {
-
-    0%,
-    100% {
-        transform: translateY(0) scale(1);
-    }
-
-    50% {
-        transform: translateY(-5px) scale(1.002);
-    }
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
 }
 
 /* SecretLevel.co style fade-in for images */
@@ -365,6 +361,8 @@ html {
     .scroll-section {
         transform: translateY(40px) scale(0.98);
         transition-duration: 0.8s;
+        height: 100vh;
+        max-height: 100vh;
     }
 
     .stagger-item {

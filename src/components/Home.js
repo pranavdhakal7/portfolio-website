@@ -2,11 +2,18 @@ import React, { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 import StickyNote from './StickyNote';
 import MarqueeStrip from './MarqueeStrip';
+import Educat3DModel from './Educat3DModel';
+
+import Rabbit3DModel from './Rabbit3DModel';
+
 import '../styles/Home.css';
+
 import '../styles/Marquee.css';
 
 const Home = () => {
     const typedRef = useRef(null);
+
+    const heroImgRef = useRef(null);
 
     useEffect(() => {
         const typed = new Typed(typedRef.current, {
@@ -26,27 +33,58 @@ const Home = () => {
         if (el) el.scrollIntoView({ behavior: 'smooth' });
     };
 
+    const handleMouseMove = (e) => {
+        if (!heroImgRef.current) return;
+        const { left, top, width, height } = heroImgRef.current.getBoundingClientRect();
+        
+        // Calculate mouse position relative to the center of the image (-1 to 1)
+        const x = (e.clientX - left - width / 2) / (width / 2);
+        const y = (e.clientY - top - height / 2) / (height / 2);
+        
+        // Limit the effect so it doesn't flip over (e.g. max 15 degrees)
+        const tiltX = -y * 15; 
+        const tiltY = x * 15;
+
+        // Apply transform
+        heroImgRef.current.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.05, 1.05, 1.05)`;
+    };
+
+    const handleMouseLeave = () => {
+        if (!heroImgRef.current) return;
+        heroImgRef.current.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    };
+
     return (
         <section className="home matrix-home" id="home">
             <StickyNote />
 
             <div className="hero-container">
                 <div className="hero-content">
-                    {/* Eyebrow */}
-                    <div className="matrix-intro stagger-item stagger-delay-1">
-                        <span className="matrix-wave">👋</span>
-                        Hey, I'm a Developer
-                    </div>
+                    <div className="hero-header-row">
+                        <div className="hero-header-text">
+                            {/* Eyebrow */}
+                            <div className="matrix-intro stagger-item stagger-delay-1">
+                                <span className="matrix-wave">👋</span>
+                                Hey, I'm a Developer
+                            </div>
 
-                    {/* Mega headline */}
-                    <h1 className="matrix-title">
-                        <span className="title-line stagger-item stagger-delay-2">Pranav</span>
-                        <span className="title-line highlight stagger-item stagger-delay-3">Dhakal</span>
-                    </h1>
+                            {/* Mega headline */}
+                            <h1 className="matrix-title">
+                                <span className="title-line stagger-item stagger-delay-2">Pranav</span>
+                                <span className="title-line highlight stagger-item stagger-delay-3">Dhakal</span>
+                            </h1>
 
-                    {/* Typed subtitle */}
-                    <div className="matrix-subtitle stagger-item stagger-delay-4">
-                        Specializing in&nbsp;<span className="typed-text" ref={typedRef}></span>
+                            {/* Typed subtitle */}
+                            <div className="matrix-subtitle stagger-item stagger-delay-4">
+                                Specializing in&nbsp;<span className="typed-text" ref={typedRef}></span>
+                            </div>
+                        </div>
+
+                        <div className="hero-header-3d stagger-item stagger-delay-3">
+                            <Educat3DModel />
+                        </div>
+
+
                     </div>
 
                     {/* Description */}
@@ -90,15 +128,26 @@ const Home = () => {
                     </div>
                 </div>
 
-                {/* Hero GIF on the right side */}
-                <div className="hero-image-container">
-                    <div className="hero-circle-glow">
-                        <div className="hero-circle-inner">
-                            <img
-                                src="/assets/images/hero.gif"
-                                alt="Hero Animation"
-                                className="hero-gif"
-                            />
+                {/* 3D Model on the right side */}
+                <div
+                    className="hero-image-container"
+                    ref={heroImgRef}
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={handleMouseLeave}
+                    style={{ transition: 'transform 0.1s ease-out', transformStyle: 'preserve-3d' }}
+                >
+                    <div className="hero-circle-glow" style={{ transform: 'translateZ(20px)' }}>
+                        <div className="hero-circle-middle" style={{ transform: 'translateZ(30px)' }}>
+                            <div className="hero-circle-inner" style={{ transform: 'translateZ(40px)' }}>
+                                <Rabbit3DModel
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        borderRadius: '50%',
+                                        overflow: 'hidden'
+                                    }}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

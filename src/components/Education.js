@@ -4,19 +4,33 @@ import '../styles/Education.css';
 const Education = () => {
     const educationData = [
         {
+            period: '2018 – Present',
+            degree: 'Where I Learned from YouTube',
+            institution: 'YouTube',
+            location: 'Online',
+            gpa: 'Self‑Taught',
+            scholarship: 'N/A',
+            description: 'Self-taught developer through online content, focusing on practical skills and real-world projects.',
+            tags: ['Artificial Intelligence & Machine Learning', 'Data Structures & Algorithms', 'Web Development', 'Mobile App Development', 'Blockchain Basics'],
+            badges: ['Self-Taught', 'Project-Based Learning', 'Continuous Learning', 'Online Certification'],
+            emoji: '🎓',
+            image: 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png',
+            active: true,
+        },
+        {
             period: 'Feb 2022 – Dec 2025',
             degree: 'B.Sc. Computer Science & Mathematics',
             institution: 'Northern Kentucky University',
             location: 'Highland Heights, KY, USA',
             gpa: '3.6',
             scholarship: '$77K',
-            ranking: 'Top 15% of Class',
+            ranking: '62nd out of nearly 600 universities around the country',
             description: 'Specialized in Artificial Intelligence, Machine Learning, and Full‑Stack Development. Completed advanced coursework in Data Structures, Algorithms, Blockchain, and Android Development.',
             tags: ['AI', 'Data Structures', 'Web Dev', 'Blockchain', 'Android', 'ML'],
             badges: ["Dean's List", "Research Assistant", "Int'l Scholarship"],
             emoji: '🎓',
-            image: '/assets/images/educat/college.jpg',
-            active: true,
+            image: '/assets/images/educat/nku.jpg',
+            active: false,
         },
         {
             period: '2018 – 2020',
@@ -29,95 +43,127 @@ const Education = () => {
             tags: ['Structural Analysis', 'Hydraulics', 'Project Mgmt', 'Engineering Drawing'],
             badges: ['Technical Graduate', 'Project Excellence'],
             emoji: '🏫',
-            image: '/assets/images/educat/school.jpg',
+            image: '/assets/images/educat/sphss.png',
             active: false,
         },
     ];
 
     return (
-        <section className="education" id="education">
-            <p className="section-eyebrow stagger-item stagger-delay-1">Academic Journey</p>
-            <h2 className="edu-headline stagger-item stagger-delay-2">
-                Where I <span>learned.</span>
-            </h2>
+        <section className="education-modern" id="education">
+            <div className="education-header">
+                <p className="section-eyebrow">Academic Journey</p>
+                <h2 className="education-title">
+                    Where I <span>learned.</span>
+                </h2>
+                <p className="education-subtitle">
+                    A timeline of my educational background and self‑taught journey.
+                </p>
+            </div>
 
-            <div className="edu-timeline">
+            <div className="education-grid">
                 {educationData.map((edu, i) => (
                     <div
-                        className={`edu-entry stagger-item stagger-delay-${i + 3} ${edu.active ? 'edu-entry--active' : ''}`}
+                        className={`education-card ${edu.active ? 'education-card--active' : ''} animate-fade-up`}
                         key={i}
+                        style={{ animationDelay: `${i * 0.1}s` }}
                     >
-                        {/* Period at top */}
-                        <div className="edu-side">
-                            <span className="edu-period">{edu.period}</span>
+                        {/* Card header with period and emoji */}
+                        <div className="card-header">
+                            <div className="card-period">
+                                <span className="card-emoji">{edu.emoji}</span>
+                                <span className="card-period-text">{edu.period}</span>
+                            </div>
+                            {edu.active && (
+                                <span className="card-badge">Current</span>
+                            )}
                         </div>
 
-                        {/* Node dot */}
-                        <div className="edu-dot">
-                            <span className="edu-dot-inner">{edu.emoji}</span>
-                        </div>
-
-                        {/* Card content (now integrated) */}
-                        <div className="edu-card">
-                            {/* Top row */}
-                            <div className="edu-card-top">
-                                <div>
-                                    <h3 className="edu-degree">{edu.degree}</h3>
-                                    <div className="edu-institution-with-image">
-                                        <div className="edu-institution-image">
-                                            <img src={edu.image} alt={edu.institution} />
-                                        </div>
-                                        <div className="edu-institution-details">
-                                            <p className="edu-institution">
-                                                <i className="fas fa-building" /> {edu.institution}
-                                                &ensp;·&ensp;
-                                                <i className="fas fa-map-marker-alt" /> {edu.location}
-                                            </p>
-                                            {edu.ranking && (
-                                                <div className="edu-ranking">
-                                                    <i className="fas fa-trophy" /> {edu.ranking}
-                                                </div>
-                                            )}
-                                            {edu.description && (
-                                                <p className="edu-description">
-                                                    {edu.description}
-                                                </p>
-                                            )}
-                                        </div>
+                        {/* Card content */}
+                        <div className="card-content">
+                            {/* Institution name highlighted at top */}
+                            <div className="card-institution-highlighted">
+                                <div className="institution-header">
+                                    <h3 className="institution-name-highlight">
+                                        <i className="fas fa-university"></i> {edu.institution}
+                                    </h3>
+                                    <div className="institution-image">
+                                        <img src={edu.image} alt={edu.institution} />
                                     </div>
                                 </div>
-
-                                {/* Stats cluster */}
-                                <div className="edu-stats">
-                                    <div className="edu-stat">
-                                        <span className="edu-stat-val">{edu.gpa}</span>
-                                        <span className="edu-stat-lbl">GPA</span>
-                                    </div>
-                                    {edu.scholarship && (
-                                        <div className="edu-stat">
-                                            <span className="edu-stat-val">{edu.scholarship}</span>
-                                            <span className="edu-stat-lbl">Scholarship</span>
-                                        </div>
+                                <div className="institution-details">
+                                    <span className="institution-location">
+                                        <i className="fas fa-map-marker-alt"></i> {edu.location}
+                                    </span>
+                                    {edu.ranking && (
+                                        <span className="institution-ranking">
+                                            <i className="fas fa-trophy"></i> {edu.ranking}
+                                        </span>
                                     )}
                                 </div>
                             </div>
+                            
+                            {/* Degree/Major */}
+                            <h4 className="card-degree">{edu.degree}</h4>
 
-                            {/* Course tags */}
-                            <div className="edu-tags">
-                                {edu.tags.map((t, j) => (
-                                    <span className="edu-tag" key={j}>{t}</span>
-                                ))}
+                            {edu.description && (
+                                <p className="card-description">{edu.description}</p>
+                            )}
+
+                            {/* Stats row */}
+                            <div className="card-stats">
+                                <div className="stat-item">
+                                    <span className="stat-value">{edu.gpa}</span>
+                                    <span className="stat-label">GPA</span>
+                                </div>
+                                {edu.scholarship && edu.scholarship !== 'N/A' && (
+                                    <div className="stat-item">
+                                        <span className="stat-value">{edu.scholarship}</span>
+                                        <span className="stat-label">Scholarship</span>
+                                    </div>
+                                )}
+                                {edu.ranking && (
+                                    <div className="stat-item">
+                                        <span className="stat-value">
+                                            <i className="fas fa-trophy"></i>
+                                        </span>
+                                        <span className="stat-label">Ranking</span>
+                                    </div>
+                                )}
                             </div>
 
-                            {/* Achievement badges */}
-                            <div className="edu-badges">
-                                {edu.badges.map((b, j) => (
-                                    <span className="edu-badge" key={j}>
-                                        <i className="fas fa-star" /> {b}
-                                    </span>
-                                ))}
-                            </div>
+                            {/* Tags */}
+                            {edu.tags && edu.tags.length > 0 && (
+                                <div className="card-tags">
+                                    <div className="tags-title">
+                                        <i className="fas fa-tags"></i> Focus Areas
+                                    </div>
+                                    <div className="tags-list">
+                                        {edu.tags.map((tag, j) => (
+                                            <span className="tag" key={j}>{tag}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Badges */}
+                            {edu.badges && edu.badges.length > 0 && (
+                                <div className="card-badges">
+                                    <div className="badges-title">
+                                        <i className="fas fa-award"></i> Achievements
+                                    </div>
+                                    <div className="badges-list">
+                                        {edu.badges.map((badge, j) => (
+                                            <span className="badge" key={j}>
+                                                <i className="fas fa-star"></i> {badge}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
+
+                        {/* Card footer with subtle gradient */}
+                        <div className="card-footer"></div>
                     </div>
                 ))}
             </div>

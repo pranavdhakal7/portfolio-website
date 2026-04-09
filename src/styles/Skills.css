@@ -3,18 +3,22 @@
    ============================================ */
 
 .skills {
-    padding: 8rem 9%;
+    padding: 8rem 9% 3rem;
     position: relative;
     overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .skills-headline {
-    font-size: clamp(3.6rem, 6vw, 6.5rem);
+    font-size: clamp(1.8rem, 4vh, 4.5rem);
     font-weight: 900;
     line-height: 1.1;
     letter-spacing: -2px;
     color: var(--text-dark);
-    margin-bottom: 3rem;
+    margin-bottom: clamp(0.5rem, 1vh, 1.2rem);
 }
 
 .skills-headline span {
@@ -29,7 +33,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem;
-    margin-bottom: 5rem;
+    margin-bottom: clamp(0.5rem, 1.2vh, 1.5rem);
 }
 
 .skill-cat {
@@ -57,8 +61,8 @@
 /* ── Icon grid ── */
 .skills-icon-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
-    gap: 1.6rem;
+    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+    gap: clamp(0.8rem, 1.5vh, 1.6rem);
 }
 
 /* Individual bubble */
@@ -67,13 +71,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    padding: 2.4rem 1.2rem;
+    gap: clamp(0.5rem, 1vh, 1rem);
+    padding: clamp(1.2rem, 2.5vh, 2.4rem) 1rem;
     background: var(--glass-bg);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(0,238,255,0.10);
-    border-radius: 20px;
+    border-radius: 16px;
     transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
     cursor: default;
     position: relative;
@@ -148,7 +152,7 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-    .skills { padding: 8rem 5%; }
+    .skills { padding: 8rem 5% 6rem; }
     .skills-icon-grid { grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 1.2rem; }
     .skill-bubble { padding: 2rem 1rem; }
 }

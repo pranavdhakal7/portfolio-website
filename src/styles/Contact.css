@@ -3,15 +3,95 @@
    ============================================ */
 
 .contact {
-    padding: 8rem 9%;
+    padding: 8rem 9% 3rem;
     position: relative;
     overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* When inside combined-section (Contact + Footer) */
+.combined-section .contact {
+    padding: 4rem 9% 1rem;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.combined-section .contact-inner {
+    gap: clamp(1.5rem, 3vw, 4rem);
+    align-items: flex-start;
+}
+
+.combined-section .contact-headline {
+    font-size: clamp(2rem, 3vw, 3.5rem);
+    margin-bottom: 0.5rem;
+}
+
+.combined-section .contact-blurb {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.combined-section .contact-links {
+    margin-bottom: 0.5rem;
+}
+
+.combined-section .clink {
+    padding: 1.2rem 1.5rem;
+    grid-template-columns: 3rem 1fr auto;
+    gap: 1rem;
+}
+
+.combined-section .clink-icon {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.2rem;
+}
+
+.combined-section .clink-text {
+    font-size: 1.2rem;
+}
+
+.combined-section .contact-socials {
+    margin-top: 0.5rem;
+}
+
+.combined-section .soc-btn {
+    width: 3.8rem;
+    height: 3.8rem;
+    font-size: 1.5rem;
+}
+
+.combined-section .contact-right {
+    padding: clamp(1.2rem, 2vh, 2.5rem);
+}
+
+.combined-section .cform-grid {
+    gap: clamp(0.5rem, 1vh, 1.2rem);
+    margin-bottom: clamp(0.5rem, 1vh, 1.2rem);
+}
+
+.combined-section .cform-input {
+    padding: clamp(0.5rem, 1vh, 1rem) 1.2rem;
+    font-size: 1.3rem;
+}
+
+.combined-section .cform-textarea {
+    min-height: clamp(4rem, 6vh, 8rem);
+}
+
+.combined-section .cform-submit {
+    padding: clamp(0.7rem, 1.2vh, 1.2rem);
+    font-size: 1.3rem;
 }
 
 .contact-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6rem;
+    gap: clamp(2rem, 4vw, 6rem);
     align-items: stretch;
     max-width: 1200px;
 }
@@ -22,14 +102,19 @@
 .contact-left {
     display: flex;
     flex-direction: column;
-    gap: 3.5rem;
+    gap: 2rem;
     position: sticky;
     top: 12rem;
     height: 100%;
 }
 
+/* Remove sticky in combined section */
+.combined-section .contact-left {
+    position: static;
+}
+
 .contact-headline {
-    font-size: clamp(3.8rem, 6vw, 6.5rem);
+    font-size: clamp(2.4rem, 4vw, 4.5rem);
     font-weight: 900;
     line-height: 1.1;
     letter-spacing: -2px;
@@ -160,8 +245,8 @@
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    padding: 4rem;
+    border-radius: 20px;
+    padding: clamp(1.5rem, 3vh, 4rem);
     position: relative;
     overflow: hidden;
     height: 100%;
@@ -182,8 +267,8 @@
 .cform-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.6rem;
-    margin-bottom: 1.6rem;
+    gap: clamp(0.6rem, 1.2vh, 1.6rem);
+    margin-bottom: clamp(0.6rem, 1.2vh, 1.6rem);
 }
 
 .cform-group {
@@ -206,12 +291,12 @@
 
 .cform-input {
     width: 100%;
-    padding: 1.3rem 1.6rem;
-    font-size: 1.5rem;
+    padding: clamp(0.6rem, 1.2vh, 1.3rem) 1.4rem;
+    font-size: 1.4rem;
     font-family: "Space Grotesk", "Inter", sans-serif;
     background: rgba(0, 238, 255, 0.03);
     border: 1.5px solid rgba(0, 238, 255, 0.12);
-    border-radius: 12px;
+    border-radius: 10px;
     color: var(--text-dark);
     outline: none;
     transition: var(--transition);
@@ -229,20 +314,20 @@
 }
 
 .cform-textarea {
-    resize: vertical;
-    min-height: 14rem;
-    line-height: 1.7;
+    resize: none;
+    min-height: clamp(5rem, 8vh, 10rem);
+    line-height: 1.6;
 }
 
 /* Submit */
 .cform-submit {
     width: 100%;
-    padding: 1.4rem;
-    margin-top: 0.4rem;
-    font-size: 1.55rem;
+    padding: clamp(0.8rem, 1.5vh, 1.4rem);
+    margin-top: 0.2rem;
+    font-size: 1.4rem;
     font-weight: 700;
     letter-spacing: 0.3px;
-    border-radius: 12px;
+    border-radius: 10px;
     border: none;
     background: var(--gradient-primary);
     color: #000;
@@ -302,6 +387,15 @@
     .contact-headline {
         font-size: clamp(3.2rem, 6vw, 5rem);
     }
+    
+    /* Combined section adjustments */
+    .combined-section .contact-inner {
+        gap: 3rem;
+    }
+    
+    .combined-section .contact-headline {
+        font-size: clamp(2.5rem, 4vw, 4rem);
+    }
 }
 
 @media (max-width: 680px) {
@@ -316,10 +410,62 @@
     .cform-grid {
         grid-template-columns: 1fr;
     }
+    
+    /* Combined section adjustments */
+    .combined-section .contact {
+        padding: 4rem 5% 2rem;
+    }
+    
+    .combined-section .contact-right {
+        padding: 2rem 1.8rem;
+    }
+    
+    .combined-section .contact-inner {
+        gap: 2.5rem;
+    }
+    
+    .combined-section .clink {
+        padding: 1rem 1.2rem;
+        grid-template-columns: 2.5rem 1fr auto;
+    }
+    
+    .combined-section .clink-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1rem;
+    }
+    
+    .combined-section .soc-btn {
+        width: 3.2rem;
+        height: 3.2rem;
+        font-size: 1.3rem;
+    }
 }
 
 @media (max-width: 480px) {
     .contact-right {
         padding: 2.2rem 1.8rem;
+    }
+    
+    /* Combined section adjustments */
+    .combined-section .contact {
+        padding: 3rem 5% 1.5rem;
+    }
+    
+    .combined-section .contact-right {
+        padding: 1.8rem 1.5rem;
+    }
+    
+    .combined-section .contact-headline {
+        font-size: clamp(2rem, 3.5vw, 3rem);
+    }
+    
+    .combined-section .contact-blurb {
+        font-size: 1.2rem;
+    }
+    
+    .combined-section .cform-input {
+        padding: 0.8rem 1rem;
+        font-size: 1.2rem;
     }
 }

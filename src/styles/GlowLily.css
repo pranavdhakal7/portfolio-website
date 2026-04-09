@@ -1,0 +1,18 @@
+.glow-lily-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+.glow-lily-canvas {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(247, 215, 148, 0.4));
+    mix-blend-mode: screen;
+}

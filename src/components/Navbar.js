@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import SpaceClock from './SpaceClock';
 import '../styles/Navbar.css';
+import '../styles/SpaceClock.css';
 
 const NAV_ITEMS = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
     { id: 'education', label: 'Education' },
-    { id: 'experience', label: 'Experience' },
     { id: 'work', label: 'Projects' },
     { id: 'awards', label: 'Awards' },
+    { id: 'experience', label: 'Experience' },
     { id: 'contact', label: 'Contact' },
 ];
 
@@ -98,6 +100,9 @@ const Navbar = () => {
                 >
                     Enjoy Browsing  <span className="logo-exclamation">!</span>
                 </a>
+
+                {/* Space-themed clock placed right after logo */}
+                <SpaceClock />
 
                 {/* Desktop nav pill */}
                 <nav className="navbar-links">

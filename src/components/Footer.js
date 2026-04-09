@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Footer.css';
+import TurtleField from './TurtleField';
 
 const SOCIALS = [
     { icon: 'fab fa-github',      href: 'https://github.com/pranavdhakal7',      label: 'GitHub' },
@@ -12,52 +13,56 @@ const Footer = () => {
     const year = new Date().getFullYear();
     return (
         <footer className="footer">
-
-            {/* Availability pill */}
-            <div className="footer-avail">
-                <span className="avail-dot" />
-                Available for opportunities
+            {/* Turtle field canvas */}
+            <div className="footer-canvas">
+                <TurtleField />
             </div>
 
-            {/* Giant full-width name — the signature Godly.website footer element */}
-            <div className="footer-bigname" aria-hidden="true">
-                <a href="#home" className="bigname-link" tabIndex={-1}>
-                    PRANAV
-                </a>
-            </div>
-
-            {/* Thin divider */}
-            <div className="footer-divider" />
-
-            {/* Bottom bar */}
-            <div className="footer-bar">
-                <p className="footer-copy">
-                    © {year} Pranav Dhakal
-                </p>
-
-                {/* Socials */}
-                <div className="footer-socials">
-                    {SOCIALS.map(s => (
-                        <a
-                            key={s.label}
-                            href={s.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="footer-soc"
-                            title={s.label}
-                        >
-                            <i className={s.icon} />
-                            <span>{s.label}</span>
-                        </a>
-                    ))}
+            {/* Top row: status + nav */}
+            <div className="footer-top">
+                <div className="footer-status">
+                    <span className="status-dot" />
+                    <span className="status-text">Available for work</span>
                 </div>
-
-                {/* Scroll to top */}
-                <a href="#home" className="footer-up" aria-label="Back to top">
-                    ↑ Top
+                <a href="#home" className="footer-back-top" aria-label="Back to top">
+                    <span className="top-arrow">↑</span>
+                    <span>Back to top</span>
                 </a>
             </div>
 
+            {/* Center: Name + tagline */}
+            <div className="footer-center">
+                <a href="#home" className="footer-name" tabIndex={-1}>
+                    PRANAV<span className="footer-name-accent">.</span>
+                </a>
+                <p className="footer-tagline">
+                    Crafting digital experiences with code & creativity
+                </p>
+            </div>
+
+            {/* Social icons */}
+            <div className="footer-social-row">
+                {SOCIALS.map(s => (
+                    <a
+                        key={s.label}
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="footer-social-icon"
+                        title={s.label}
+                    >
+                        <i className={s.icon} />
+                    </a>
+                ))}
+            </div>
+
+            {/* Bottom divider + copyright */}
+            <div className="footer-bottom">
+                <div className="footer-line" />
+                <p className="footer-copy">
+                    © {year} Pranav Dhakal — Built with passion
+                </p>
+            </div>
         </footer>
     );
 };

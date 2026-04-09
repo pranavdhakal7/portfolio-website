@@ -34,8 +34,8 @@ const SkillsEducation = () => {
                         <h3>Skills & Abilities</h3>
                     </div>
                     <div className="skills-grid">
-                        {skillsData.map((skill, index) => (
-                            <div className="skill-item" key={index}>
+                        {skillsData.map((skill) => (
+                            <div className="skill-item" key={skill.name}>
                                 <div className="skill-icon">
                                     <img src={skill.icon} alt={skill.name} />
                                 </div>
@@ -86,8 +86,8 @@ const SkillsEducation = () => {
                         <div className="coursework-section">
                             <h5>Relevant Coursework</h5>
                             <div className="coursework-tags">
-                                {educationData.coursework.map((course, index) => (
-                                    <span className="course-tag" key={index}>{course}</span>
+                                {educationData.coursework.map((course) => (
+                                    <span className="course-tag" key={course}>{course}</span>
                                 ))}
                             </div>
                         </div>

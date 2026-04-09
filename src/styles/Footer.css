@@ -1,195 +1,249 @@
 /* ============================================
-   FOOTER — Godly.website Big-Name Poster Style
+   FOOTER — Cyber-Space Minimal
    ============================================ */
 
 .footer {
     position: relative;
-    padding: 7rem 6% 4rem;
+    padding: 1.8rem 6% 1.5rem;
     border-top: 1px solid rgba(0,238,255,0.08);
     overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-/* Subtle radial glow behind the big name */
+/* When inside combined-section */
+.combined-section .footer {
+    padding: 1.2rem 6% 1rem;
+}
+
+/* Subtle glow */
 .footer::before {
     content: '';
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;
-    height: 50%;
+    width: 60%;
+    height: 40%;
     background: radial-gradient(ellipse at center bottom,
-        rgba(0,238,255,0.06) 0%,
-        rgba(128,0,255,0.04) 40%,
+        rgba(0,238,255,0.05) 0%,
+        rgba(128,0,255,0.03) 40%,
         transparent 70%);
     pointer-events: none;
     z-index: 0;
 }
 
-/* ── Availability pill ── */
-.footer-avail {
-    display: inline-flex;
+/* ── Top Row ── */
+.footer-top {
+    display: flex;
     align-items: center;
-    gap: 0.7rem;
-    padding: 0.6rem 1.4rem;
-    background: rgba(34,197,94,0.08);
-    border: 1px solid rgba(34,197,94,0.22);
-    border-radius: 9999px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #4ade80;
-    letter-spacing: 0.5px;
-    margin-bottom: 5rem;
+    justify-content: space-between;
     position: relative;
     z-index: 1;
 }
 
-.avail-dot {
-    width: 8px;
-    height: 8px;
+.footer-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 1rem;
+    background: rgba(34,197,94,0.06);
+    border: 1px solid rgba(34,197,94,0.18);
+    border-radius: 9999px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: #22c55e;
-    box-shadow: 0 0 8px rgba(34,197,94,0.8);
+    box-shadow: 0 0 8px rgba(34,197,94,0.7);
     animation: pulse-dot 2s infinite;
-    flex-shrink: 0;
 }
 
 @keyframes pulse-dot {
-    0%,100% { transform: scale(1);   opacity: 1; }
-    50%      { transform: scale(1.4); opacity: 0.6; }
+    0%,100% { transform: scale(1); opacity: 1; }
+    50%     { transform: scale(1.4); opacity: 0.6; }
 }
 
-/* ══════════════════════════════════════════
-   THE SIGNATURE ELEMENT — Giant name
-   Fills the full container width using vw units + letter-spacing
-   This is the Godly.website / Awwwards footer signature
-══════════════════════════════════════════ */
-.footer-bigname {
+.status-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4ade80;
+    letter-spacing: 0.3px;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+.footer-back-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-light);
+    opacity: 0.45;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    font-family: "Space Grotesk", sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.footer-back-top:hover {
+    color: var(--primary-color);
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.top-arrow {
+    font-size: 1.3rem;
+}
+
+/* ── Center Block ── */
+.footer-center {
+    text-align: center;
     position: relative;
     z-index: 1;
-    line-height: 0.85;
-    margin-bottom: 4rem;
-    overflow: hidden;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.bigname-link {
+.footer-name {
     display: block;
-    font-size: clamp(8rem, 20vw, 22rem);
+    font-size: clamp(3rem, 8vw, 7rem);
     font-weight: 900;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.03em;
     text-decoration: none;
     font-family: "Space Grotesk", sans-serif;
-
-    /* Outlined / gradient text */
+    line-height: 1;
     background: linear-gradient(
         135deg,
-        rgba(255,255,255,0.90) 0%,
-        rgba(0,238,255,0.55)  50%,
-        rgba(128,0,255,0.40) 100%
+        rgba(255,255,255,0.88) 0%,
+        rgba(0,238,255,0.50)  50%,
+        rgba(128,0,255,0.35) 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-
-    /* Subtle text stroke for depth */
-    -webkit-text-stroke: 1px rgba(0,238,255,0.12);
-
+    -webkit-text-stroke: 1px rgba(0,238,255,0.08);
     transition: letter-spacing 0.6s cubic-bezier(0.23,1,0.32,1),
                 filter 0.4s ease;
-    white-space: nowrap;
 }
 
-.bigname-link:hover {
+.footer-name:hover {
     letter-spacing: 0.02em;
-    filter: drop-shadow(0 0 40px rgba(0,238,255,0.35));
+    filter: drop-shadow(0 0 30px rgba(0,238,255,0.3));
 }
 
-/* ── Divider ── */
-.footer-divider {
-    height: 1px;
-    background: rgba(0,238,255,0.08);
-    margin-bottom: 2.4rem;
-    position: relative;
-    z-index: 1;
+.footer-name-accent {
+    -webkit-text-fill-color: transparent;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
-/* ── Bottom bar ── */
-.footer-bar {
+.footer-tagline {
+    font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+    color: var(--text-light);
+    opacity: 0.4;
+    margin-top: 0.6rem;
+    font-family: "Space Grotesk", sans-serif;
+    letter-spacing: 0.3px;
+}
+
+/* ── Social Icons ── */
+.footer-social-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1.6rem;
+    justify-content: center;
+    gap: 1.8rem;
     position: relative;
     z-index: 1;
+}
+
+.footer-social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,238,255,0.12);
+    background: rgba(0,238,255,0.04);
+    color: var(--text-light);
+    opacity: 0.5;
+    font-size: 1.4rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.footer-social-icon:hover {
+    opacity: 1;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    background: rgba(0,238,255,0.08);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 18px rgba(0,238,255,0.15);
+}
+
+/* ── Bottom ── */
+.footer-bottom {
+    position: relative;
+    z-index: 1;
+}
+
+.footer-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,238,255,0.1), transparent);
+    margin-bottom: 0.8rem;
 }
 
 .footer-copy {
-    font-size: 1.3rem;
+    text-align: center;
+    font-size: 1.1rem;
     font-weight: 500;
     color: var(--text-light);
-    opacity: 0.5;
+    opacity: 0.3;
     margin: 0;
     font-family: "Space Grotesk", sans-serif;
 }
 
-/* Socials row */
-.footer-socials {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+/* ── Turtle Field Canvas ── */
+.footer-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.6;
 }
 
-.footer-soc {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--text-light);
-    opacity: 0.55;
-    text-decoration: none;
-    transition: var(--transition);
-    font-family: "Space Grotesk", sans-serif;
+.footer-canvas .turtle-field-container {
+    width: 100%;
+    height: 100%;
 }
 
-.footer-soc i { font-size: 1.5rem; }
-
-.footer-soc:hover {
-    color: var(--primary-color);
-    opacity: 1;
-    transform: translateY(-2px);
-}
-
-/* Scroll to top */
-.footer-up {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--text-light);
-    opacity: 0.45;
-    text-decoration: none;
-    letter-spacing: 1px;
-    transition: var(--transition);
-    font-family: "Space Grotesk", sans-serif;
-}
-
-.footer-up:hover {
-    color: var(--primary-color);
-    opacity: 1;
-    transform: translateY(-2px);
+.footer-canvas canvas {
+    width: 100%;
+    height: 100%;
 }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-    .footer { padding: 5rem 5% 3.5rem; }
-    .bigname-link { font-size: clamp(6rem, 18vw, 12rem); }
-    .footer-bar { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
-    .footer-socials { flex-wrap: wrap; gap: 1.4rem; }
+    .footer { padding: 1.5rem 5% 1.2rem; }
+    .footer-name { font-size: clamp(2.5rem, 14vw, 5rem); }
+    .footer-social-row { gap: 1.4rem; }
+    .footer-social-icon { width: 34px; height: 34px; font-size: 1.2rem; }
 }
 
 @media (max-width: 480px) {
-    .bigname-link { font-size: clamp(5rem, 16vw, 9rem); letter-spacing: -0.02em; }
-    .footer-soc span { display: none; }
-    .footer-soc i { font-size: 1.8rem; }
-    .footer-socials { gap: 1.8rem; }
+    .footer-name { font-size: clamp(2rem, 12vw, 4rem); }
+    .footer-tagline { font-size: 1rem; }
+    .footer-top { flex-wrap: wrap; gap: 0.8rem; }
 }

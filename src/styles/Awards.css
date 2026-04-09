@@ -3,9 +3,31 @@
    ============================================ */
 
 .awards {
-    padding: 8rem 9%;
+    padding: 8rem 9% 3rem;
     position: relative;
     overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* When inside combined-section (with Contact) */
+.combined-section .awards {
+    padding: 4rem 9% 0;
+    justify-content: flex-start;
+}
+
+.combined-section .awards-grid {
+    padding-bottom: 0;
+}
+
+.combined-section .award-item:last-child {
+    margin-bottom: 0;
+}
+
+.combined-section .awards-headline {
+    margin-bottom: 0.5rem;
 }
 
 @media (max-width: 768px) {
@@ -13,15 +35,24 @@
         overflow-x: visible;
         overflow-y: hidden;
     }
+    
+    /* Ensure bottom padding is removed on mobile too */
+    .combined-section .awards {
+        padding: 4rem 9% 0;
+    }
+    
+    .combined-section .awards-grid {
+        padding-bottom: 0;
+    }
 }
 
 .awards-headline {
-    font-size: clamp(3.6rem, 6vw, 6.5rem);
+    font-size: clamp(2rem, 4vh, 4rem);
     font-weight: 900;
     line-height: 1.1;
     letter-spacing: -2px;
     color: var(--text-dark);
-    margin-bottom: 4rem;
+    margin-bottom: clamp(0.8rem, 1.5vh, 1.5rem);
 }
 
 .awards-headline span {
@@ -36,7 +67,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: 2.5rem;
+    gap: 1.2rem;
     overflow-x: visible;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
@@ -62,11 +93,11 @@
 
 .award-item {
     flex: 1 1 0%;
-    min-width: 200px;
+    min-width: 160px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 2rem;
+    padding: 1.2rem 1.4rem;
     border: 1px solid rgba(0, 238, 255, 0.08);
     border-radius: var(--border-radius-lg);
     background: rgba(8, 10, 28, 0.4);
@@ -156,6 +187,7 @@
     color: var(--text-light);
     font-weight: 500;
     margin: 0;
+    text-align: left;
 }
 
 /* Hover arrow */

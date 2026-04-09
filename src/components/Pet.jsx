@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 const FOOD_TYPES = [
   { emoji: '🍖', color: '#ff6b6b', weight: 25, name: 'meat' },
@@ -15,7 +16,7 @@ function randFood() {
 }
 
 const DOG_W = 110;
-const GROUND_Y = 310;
+const GROUND_Y = 90;
 
 export default function Pet() {
   const containerRef = useRef(null);
@@ -30,9 +31,10 @@ export default function Pet() {
     container.style.bottom = '0';
     container.style.left = '0';
     container.style.width = '100%';
-    container.style.height = '400px'; // adjust as needed
-    container.style.pointerEvents = 'auto'
-    container.style.zIndex = '10000';
+    container.style.height = '180px';
+    container.style.pointerEvents = 'none';
+    container.style.zIndex = '99999';
+    container.style.overflow = 'visible';
 
     // ── State ──────────────────────────────────────────────────────────────
     let idN = 0;
@@ -52,7 +54,7 @@ export default function Pet() {
     // Score display
     const scoreEl = document.createElement('div');
     scoreEl.style.cssText = `position:absolute;top:12px;left:16px;background:rgba(255,255,255,0.85);
-      border-radius:20px;padding:6px 16px;font-size:0.85rem;font-weight:600;color:#333;z-index:200;`;
+      border-radius:20px;padding:6px 16px;font-size:0.85rem;font-weight:600;color:#333;z-index:200;pointer-events:auto;`;
     scoreEl.textContent = '🍖 Fed: 0';
     container.appendChild(scoreEl);
     let fedCount = 0;
@@ -62,7 +64,6 @@ export default function Pet() {
     hint.style.cssText = `position:absolute;bottom:12px;left:50%;transform:translateX(-50%);
       background:rgba(0,0,0,0.35);color:white;border-radius:20px;padding:5px 14px;
       font-size:0.75rem;z-index:200;pointer-events:none;`;
-    hint.textContent = 'Click "Drop Food!" to feed your dog 🐶';
     container.appendChild(hint);
 
     // Particle layer
@@ -101,7 +102,7 @@ export default function Pet() {
     document.head.appendChild(styleTag);
 
     const dogEl = document.createElement('div');
-    dogEl.style.cssText = `position:absolute;width:${DOG_W}px;height:90px;pointer-events:none;z-index:70;`;
+    dogEl.style.cssText = `position:absolute;width:${DOG_W}px;height:90px;pointer-events:auto;z-index:70;`;
     dogEl.innerHTML = `
       <div class="d-tail" id="dtail"></div>
 
@@ -173,7 +174,7 @@ export default function Pet() {
     btn.style.cssText = `
       position:absolute;padding:10px 22px;font-size:0.88rem;cursor:pointer;
       background:linear-gradient(135deg,#ff9a56,#ff6b6b);border:none;
-      border-radius:25px;color:white;font-weight:700;z-index:200;
+      border-radius:25px;color:white;font-weight:700;z-index:200;pointer-events:auto;
       transform:translateX(-50%);white-space:nowrap;
       box-shadow:0 4px 14px rgba(255,107,107,0.45);transition:box-shadow 0.15s,transform 0.1s;
     `;
@@ -415,5 +416,5 @@ export default function Pet() {
     };
   }, []);
 
-  return <div ref={containerRef} />;
+  return createPortal(<div ref={containerRef} />, document.body);
 }

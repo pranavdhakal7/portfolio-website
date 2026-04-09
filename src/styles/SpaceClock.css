@@ -1,0 +1,210 @@
+/* SpaceClock.css - Space-themed clock styling for navbar */
+
+.space-clock-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.space-clock {
+    position: relative;
+    background: rgba(5, 7, 28, 0.85);
+    border: 1px solid rgba(0, 238, 255, 0.3);
+    border-left: 3px solid #00eeff;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+        0 0 20px rgba(0, 238, 255, 0.2),
+        inset 0 0 15px rgba(0, 238, 255, 0.08);
+    overflow: hidden;
+}
+
+/* Space background effects */
+.space-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(1px 1px at 10px 15px, rgba(255, 255, 255, 0.8) 1px, transparent 0),
+        radial-gradient(1px 1px at 30px 40px, rgba(255, 255, 255, 0.6) 1px, transparent 0);
+    background-size: 60px 60px;
+    opacity: 0.3;
+    animation: twinkle 4s infinite alternate;
+}
+
+.space-planet {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle at 30% 30%, #8000ff, #0088ff);
+    border-radius: 50%;
+    opacity: 0.25;
+    filter: blur(1px);
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.5; }
+}
+
+/* Single line clock content */
+.clock-content.single-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.time-group {
+    display: flex;
+    align-items: baseline;
+}
+
+.time-digits {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #00eeff, #0088ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 8px rgba(0, 238, 255, 0.5);
+}
+
+.ampm {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    color: #9baacf;
+    margin-left: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.separator {
+    color: rgba(0, 238, 255, 0.5);
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin: 0 0.2rem;
+}
+
+.day-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #ffffff;
+    text-shadow: 0 0 6px rgba(0, 238, 255, 0.6);
+}
+
+.date-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #9baacf;
+    text-shadow: 0 0 5px rgba(0, 238, 255, 0.5);
+}
+
+/* Glow effects */
+.clock-glow {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: radial-gradient(circle at center, rgba(0, 238, 255, 0.1) 0%, transparent 70%);
+    z-index: 1;
+    border-radius: 12px;
+}
+
+.pulse-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 238, 255, 0.1);
+    animation: pulse 4s infinite;
+    z-index: 1;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.1;
+        transform: translate(-50%, -50%) scale(1.03);
+    }
+    100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1100px) {
+    .space-clock {
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .time-digits {
+        font-size: 1rem;
+    }
+    
+    .day-text, .date-text {
+        font-size: 0.9rem;
+    }
+    
+    .separator {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .space-clock-container {
+        margin-right: 1rem;
+    }
+    
+    .space-clock {
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .clock-content.single-line {
+        gap: 0.3rem;
+    }
+    
+    .time-digits {
+        font-size: 0.9rem;
+    }
+    
+    .day-text, .date-text {
+        font-size: 0.8rem;
+    }
+    
+    .space-planet {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .space-clock {
+        display: none; /* Hide on very small screens to save space */
+    }
+}
