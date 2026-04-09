@@ -1,6 +1,5 @@
 import React from 'react';
 import '../styles/Footer.css';
-import TurtleField from './TurtleField';
 
 const SOCIALS = [
     { icon: 'fab fa-github',      href: 'https://github.com/pranavdhakal7',      label: 'GitHub' },
@@ -13,11 +12,6 @@ const Footer = () => {
     const year = new Date().getFullYear();
     return (
         <footer className="footer">
-            {/* Turtle field canvas */}
-            <div className="footer-canvas">
-                <TurtleField />
-            </div>
-
             {/* Top row: status + nav */}
             <div className="footer-top">
                 <div className="footer-status">
