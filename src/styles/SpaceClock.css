@@ -203,8 +203,8 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 900px) {
     .space-clock {
-        display: none; /* Hide on very small screens to save space */
+        display: none; /* Hide when burger menu appears to save space */
     }
 }

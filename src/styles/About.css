@@ -14,8 +14,10 @@ section.about {
     background: transparent;
     min-height: 100vh;
     box-sizing: border-box;
-    zoom: 1.1ike ;
-    /* zoom removed for better compatibility, using font-size scaling elsewhere */
+}
+
+.mobile-profile-container {
+    display: none;
 }
 
 .about::before {
@@ -459,26 +461,70 @@ section.about {
 /* ══════════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════════ */
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
     section.about {
-        grid-template-columns: 1fr;
-        overflow-y: auto;
-        transform: scale(1);
-        padding: 0 7% 2rem;
+        display: flex !important;
+        flex-direction: column !important; /* Stack normally: eyebrow -> headline -> mobile-profile -> bio */
+        height: auto !important;
+        min-height: auto !important;
+        padding: 5rem 6% 3rem !important;
+        gap: 1.5rem;
     }
-    .alien-device { max-width: 300px; height: auto; }
-}
 
-@media (max-width: 768px) {
-    section.about {
-        padding: 0 5% 2rem;
-        transform: scale(1);
+    .mobile-profile-container {
+        display: block;
+        width: 100%;
+        margin-bottom: 2rem;
     }
-    .about-exp-grid { grid-template-columns: 1fr; }
-    .alien-info-grid { grid-template-columns: 1fr; }
+
+    .about-right {
+        display: none !important;
+    }
+    
+    .about-left, .about-right {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about-headline { font-size: 2.2rem; margin-bottom: 2rem; }
+    .about-bio { font-size: 1.25rem; margin-bottom: 3rem; }
+    
+    .expertise-grid { 
+        grid-template-columns: 1fr 1fr; /* Keep 2 in a row for expertise on mobile if possible, or 1fr */
+        gap: 1rem;
+    }
+    
+    .about-exp-grid { 
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important; /* 2 in a row as requested */
+        gap: 1rem !important;
+        margin-top: 3rem;
+    }
+
+    .about-exp-card {
+        width: 100% !important;
+        min-height: 180px;
+        padding: 0.8rem;
+    }
+
+    .about-exp-role {
+        font-size: 1.1rem;
+    }
+    
+    .alien-device { 
+        max-width: 100%; 
+        height: auto;
+        margin-top: 0;
+        margin-bottom: 3rem;
+    }
+    
+    .alien-info-grid { 
+        grid-template-columns: 1fr 1fr; /* 2 in a row for profile info cells too */
+    }
 }
 
 @media (max-width: 480px) {
-    .about-headline { font-size: 1.6rem; }
-    .expertise-grid { grid-template-columns: 1fr; }
+    .about-headline { font-size: 1.8rem; }
+    .alien-device { height: 50vh; }
 }

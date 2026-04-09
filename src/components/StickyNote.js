@@ -2,6 +2,21 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../styles/StickyNote.css';
 
 const StickyNote = () => {
+    const [isMobile, setIsMobile] = useState(false);
+    
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+        };
+    }, []);
+    
     const [position, setPosition] = useState(() => {
         if (typeof window === 'undefined') return { x: 100, y: 150 };
         const x = window.innerWidth - 280 - 20; // 280 width, 20 margin
@@ -48,6 +63,10 @@ const StickyNote = () => {
         };
     }, [isDragging, dragOffset]);
 
+    if (isMobile) {
+        return null;
+    }
+
     return (
         <div
             ref={noteRef}
@@ -70,10 +89,6 @@ const StickyNote = () => {
                     <li>Become Rich</li>
                 </ul>
             </div>
-
-
-
-
         </div>
     );
 };

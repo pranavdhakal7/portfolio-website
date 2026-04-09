@@ -18,7 +18,7 @@ function randFood() {
 const DOG_W = 110;
 const GROUND_Y = 90;
 
-export default function Pet() {
+export default function Pet(props) {
   const containerRef = useRef(null);
   const gameRef = useRef(null);
 
@@ -26,14 +26,31 @@ export default function Pet() {
     const container = containerRef.current;
     if (!container) return;
 
-    // Make container fixed at bottom
-    container.style.position = 'fixed';
-    container.style.bottom = '0';
-    container.style.left = '0';
-    container.style.width = '100%';
-    container.style.height = '180px';
-    container.style.pointerEvents = 'none';
-    container.style.zIndex = '99999';
+    // Check for mobile and hide if screen is small
+    const isMobile = window.innerWidth <= 900;
+    const petScale = isMobile ? 0.45 : 0.6;
+
+    // Make container fixed at bottom unless inline
+    if (props.inline) {
+      container.style.position = 'absolute';
+      container.style.bottom = '0';
+      container.style.left = '50%';
+      container.style.transform = `translateX(-50%) scale(${petScale})`;
+      container.style.width = '200px';
+      container.style.height = '150px';
+    } else {
+      container.style.position = 'fixed';
+      container.style.bottom = '0';
+      container.style.left = '0';
+      container.style.width = '100%';
+      container.style.height = isMobile ? '120px' : '180px';
+      if (isMobile) {
+        container.style.transform = 'scale(0.85)';
+        container.style.transformOrigin = 'bottom center';
+      }
+    }
+    container.style.pointerEvents = props.inline ? 'none' : 'auto';
+    container.style.zIndex = props.inline ? '10' : '10000';
     container.style.overflow = 'visible';
 
     // ── State ──────────────────────────────────────────────────────────────
@@ -54,7 +71,7 @@ export default function Pet() {
     // Score display
     const scoreEl = document.createElement('div');
     scoreEl.style.cssText = `position:absolute;top:12px;left:16px;background:rgba(255,255,255,0.85);
-      border-radius:20px;padding:6px 16px;font-size:0.85rem;font-weight:600;color:#333;z-index:200;pointer-events:auto;`;
+      border-radius:20px;padding:6px 16px;font-size:0.85rem;font-weight:600;color:#333;z-index:50;pointer-events:auto;`;
     scoreEl.textContent = '🍖 Fed: 0';
     container.appendChild(scoreEl);
     let fedCount = 0;
@@ -63,12 +80,12 @@ export default function Pet() {
     const hint = document.createElement('div');
     hint.style.cssText = `position:absolute;bottom:12px;left:50%;transform:translateX(-50%);
       background:rgba(0,0,0,0.35);color:white;border-radius:20px;padding:5px 14px;
-      font-size:0.75rem;z-index:200;pointer-events:none;`;
+      font-size:0.75rem;z-index:50;pointer-events:none;`;
     container.appendChild(hint);
 
     // Particle layer
     const pLayer = document.createElement('div');
-    pLayer.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:90;';
+    pLayer.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:40;';
     container.appendChild(pLayer);
 
     // ── Dog DOM ──────────────────────────────────────────────────────────
@@ -102,7 +119,7 @@ export default function Pet() {
     document.head.appendChild(styleTag);
 
     const dogEl = document.createElement('div');
-    dogEl.style.cssText = `position:absolute;width:${DOG_W}px;height:90px;pointer-events:auto;z-index:70;`;
+    dogEl.style.cssText = `position:absolute;width:${DOG_W}px;height:90px;pointer-events:auto;z-index:30;`;
     dogEl.innerHTML = `
       <div class="d-tail" id="dtail"></div>
 
@@ -174,7 +191,7 @@ export default function Pet() {
     btn.style.cssText = `
       position:absolute;padding:10px 22px;font-size:0.88rem;cursor:pointer;
       background:linear-gradient(135deg,#ff9a56,#ff6b6b);border:none;
-      border-radius:25px;color:white;font-weight:700;z-index:200;pointer-events:auto;
+      border-radius:25px;color:white;font-weight:700;z-index:50;pointer-events:auto;
       transform:translateX(-50%);white-space:nowrap;
       box-shadow:0 4px 14px rgba(255,107,107,0.45);transition:box-shadow 0.15s,transform 0.1s;
     `;
@@ -416,5 +433,8 @@ export default function Pet() {
     };
   }, []);
 
+  if (props.inline) {
+    return <div ref={containerRef} className="pet-inline-container" style={{ position: 'relative', width: '100%', height: '100%' }} />;
+  }
   return createPortal(<div ref={containerRef} />, document.body);
 }

@@ -11,10 +11,19 @@
     filter: blur(2px);
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    height: 100vh;
-    max-height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
     position: relative;
+}
+
+/* Disable scroll snapping on mobile */
+@media (max-width: 768px) {
+    .scroll-section {
+        scroll-snap-align: none;
+        scroll-snap-stop: normal;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
 }
 
 .section-visible {
@@ -357,12 +366,12 @@ html {
 }
 
 /* Responsive adjustments for mobile */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .scroll-section {
         transform: translateY(40px) scale(0.98);
         transition-duration: 0.8s;
-        height: 100vh;
-        max-height: 100vh;
+        height: auto !important;
+        max-height: none !important;
     }
 
     .stagger-item {

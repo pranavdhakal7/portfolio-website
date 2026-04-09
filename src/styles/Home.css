@@ -71,6 +71,28 @@
     position: relative;
 }
 
+/* ── Mobile Rabbit (Hidden by default) ── */
+.hero-mobile-rabbit {
+    display: none;
+}
+
+/* ── Small Pets ── */
+.small-pets-row {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.small-pet-container {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    filter: drop-shadow(0 0 10px rgba(0, 238, 255, 0.3));
+}
+
 /* ── Eyebrow label ── */
 .matrix-intro {
     display: inline-flex;
@@ -138,6 +160,13 @@
     filter: drop-shadow(0 0 30px rgba(0, 238, 255, 0.4));
 }
 
+@media (max-width: 900px) {
+    .matrix-title {
+        font-size: clamp(4.5rem, 10vw, 8rem); /* Slightly larger for phone users */
+        letter-spacing: -1px;
+    }
+}
+
 /* ── Subtitle / typed text ── */
 .matrix-subtitle {
     font-size: clamp(1.8rem, 2.5vw, 2.8rem);
@@ -177,7 +206,7 @@
     justify-content: center;
     align-items: center;
     gap: 3.5rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
 }
 
@@ -213,8 +242,9 @@
 /* ── CTA Buttons ── */
 .matrix-actions {
     display: flex;
-    gap: 1.6rem;
-    justify-content: center;
+    gap: 0.8rem;
+    justify-content: flex-start;
+    margin-top: -0.5rem;
     margin-bottom: 3rem;
     flex-wrap: wrap;
 }
@@ -423,35 +453,79 @@
     }
 
     .hero-container {
-        flex-direction: column;
+        flex-direction: column; 
         align-items: center;
         text-align: center;
-        gap: 5rem;
+        gap: 2rem;
+    }
+
+    .hero-image-container {
+        display: none !important; /* Hide Desktop Rabbit model for mobile */
+    }
+
+    .hero-mobile-rabbit {
+        display: block !important;
+        width: 100%;
+        max-width: 280px;
+        height: 280px;
+        margin: 0 auto 2rem;
+        background: radial-gradient(circle at center, rgba(0, 238, 255, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
     }
 
     .hero-content {
         align-items: center;
         text-align: center;
         max-width: 100%;
+        width: 100%;
+    }
+
+    .matrix-actions {
+        align-self: flex-start;
     }
 
     .hero-header-row {
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        gap: 0;
+        flex-direction: row !important; /* Force single row for text and model */
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        gap: 1.5rem;
+        width: 100%;
+        margin-bottom: 2rem;
     }
 
     .hero-header-text {
-        align-items: center;
-        text-align: center;
-        max-width: 100%;
+        align-items: flex-start;
+        text-align: left;
+        flex: 1;
+        min-width: 0;
     }
 
     .hero-header-3d {
-        width: 350px;
-        height: 350px;
-        margin: -2rem auto 2rem;
+        width: clamp(160px, 48vw, 280px); /* Enlarged for mobile zoom effect */
+        height: clamp(160px, 48vw, 280px);
+        margin: 0 !important;
+        flex-shrink: 0;
+        filter: drop-shadow(0 0 25px rgba(0, 238, 255, 0.4));
+    }
+
+    .matrix-title {
+        font-size: clamp(2.2rem, 7vw, 3.8rem); /* Slightly smaller to fit in row with larger model */
+        line-height: 1.1;
+    }
+
+    .matrix-subtitle {
+        font-size: 1.6rem;
+        white-space: normal;
+        height: auto;
+    }
+
+    .matrix-intro {
+        margin-bottom: 1.2rem;
+        padding: 0.4rem 1.2rem;
+        font-size: 1rem;
     }
 
     .matrix-description {
@@ -459,32 +533,32 @@
         align-self: flex-start;
         margin-left: 0;
         margin-right: auto;
+        font-size: 1.5rem;
+        padding: 1.5rem;
     }
 
     .hero-3d-floating {
-        position: relative;
-        top: auto;
-        right: auto;
-        width: 300px;
-        height: 300px;
-        margin: 2rem auto;
+        display: none;
     }
 
     .hero-circle-glow {
-        width: 320px;
-        height: 320px;
+        display: none;
     }
 
-    .hero-circle-inner {
-        width: 290px;
-        height: 290px;
+    .hero-mobile-rabbit {
+        display: block;
+    }
+
+    .small-pet-container {
+        width: 85px; /* Shrink pets for mobile */
+        height: 85px;
     }
 }
 
 @media (max-width: 768px) {
     .matrix-actions {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
 
     .matrix-btn {
@@ -513,5 +587,24 @@
     .hero-circle-inner {
         width: 220px;
         height: 220px;
+    }
+
+    .matrix-description {
+        padding: 1.5rem;
+        font-size: 1.6rem;
+    }
+
+    .matrix-actions {
+        gap: 0.8rem;
+    }
+}
+
+/* Desktop fix for overlapping buttons and marquee */
+@media (min-width: 992px) {
+    .matrix-home {
+        padding-bottom: 4rem;
+    }
+    .matrix-actions {
+        margin-bottom: 5rem;
     }
 }

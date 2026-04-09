@@ -5,8 +5,8 @@
 .awards {
     padding: 8rem 9% 3rem;
     position: relative;
-    overflow: hidden;
-    height: 100%;
+    background: transparent;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,19 +30,10 @@
     margin-bottom: 0.5rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .awards {
-        overflow-x: visible;
-        overflow-y: hidden;
-    }
-    
-    /* Ensure bottom padding is removed on mobile too */
-    .combined-section .awards {
-        padding: 4rem 9% 0;
-    }
-    
-    .combined-section .awards-grid {
-        padding-bottom: 0;
+        padding: 5rem 6% 3rem;
+        height: auto;
     }
 }
 
@@ -76,18 +67,19 @@
 /* Enable horizontal scrolling on mobile */
 @media (max-width: 768px) {
     .awards-grid {
-        overflow-x: auto;
-        padding-bottom: 1rem;
-        scroll-snap-type: x mandatory;
-        scroll-padding: 0 5%;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important; /* 2 in a row */
+        gap: 1rem !important;
+        overflow-x: visible !important;
+        padding-bottom: 2rem;
     }
 
     .award-item {
-        scroll-snap-align: start;
-        flex: 0 0 auto;
-        width: 85vw;
-        max-width: 300px;
-        min-width: 0;
+        flex: 1 1 100% !important;
+        width: 100% !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        padding: 1rem !important;
     }
 }
 
@@ -229,10 +221,10 @@
     }
 
     .award-item {
-        padding: 1.5rem;
-        width: 80vw;
-        max-width: 280px;
-        min-width: 0;
+        padding: 1rem !important;
+        width: 100% !important;
+        max-width: none !important;
+        min-width: 0 !important;
     }
 
     .award-num {

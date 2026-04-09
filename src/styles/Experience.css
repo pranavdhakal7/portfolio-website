@@ -6,8 +6,8 @@
 .experience {
     padding: 8rem 9% 3rem;
     position: relative;
-    overflow: hidden;
-    height: 100%;
+    background: transparent;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -204,15 +204,19 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .experience {
-        padding: 8rem 5%;
-        overflow-x: visible;
-        overflow-y: hidden;
+        padding: 5rem 6% 3rem;
+        height: auto;
+    }
+
+    .exp-row {
+        gap: 1.5rem;
     }
 
     .exp-card {
-        width: 26rem;
+        width: 25rem;
+        padding: 1.8rem 1.5rem;
     }
 }
 

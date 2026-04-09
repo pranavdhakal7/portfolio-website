@@ -5,21 +5,38 @@ const CAT_W = 100;
 const GROUND_Y = 90;
 const FISH_EMOJI = '🐟';
 
-export default function FishCat() {
+export default function FishCat(props) {
   const containerRef = useRef(null);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
+    // Check for mobile and hide if screen is small
+    const isMobile = window.innerWidth <= 900;
+    const catScale = isMobile ? 0.45 : 0.6;
+
     container.innerHTML = '';
-    container.style.position = 'fixed';
-    container.style.bottom = '0';
-    container.style.left = '0';
-    container.style.width = '100%';
-    container.style.height = '180px';
-    container.style.pointerEvents = 'none';
-    container.style.zIndex = '99999';
+    if (props.inline) {
+      container.style.position = 'absolute';
+      container.style.bottom = '0';
+      container.style.left = '50%';
+      container.style.transform = `translateX(-50%) scale(${catScale})`;
+      container.style.width = '200px';
+      container.style.height = '150px';
+    } else {
+      container.style.position = 'fixed';
+      container.style.bottom = '0';
+      container.style.left = '0';
+      container.style.width = '100%';
+      container.style.height = isMobile ? '120px' : '180px';
+      if (isMobile) {
+        container.style.transform = 'scale(0.85)';
+        container.style.transformOrigin = 'bottom center';
+      }
+    }
+    container.style.pointerEvents = props.inline ? 'none' : 'auto';
+    container.style.zIndex = props.inline ? '90' : '99999';
     container.style.overflow = 'visible';
 
     let idN = 0;
@@ -323,5 +340,8 @@ export default function FishCat() {
     return () => { cancelAnimationFrame(raf); styleTag.remove(); container.innerHTML = ''; };
   }, []);
 
+  if (props.inline) {
+    return <div ref={containerRef} className="cat-inline-container" style={{ position: 'relative', width: '100%', height: '100%' }} />;
+  }
   return createPortal(<div ref={containerRef}></div>, document.body);
 }

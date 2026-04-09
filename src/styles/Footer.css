@@ -8,6 +8,7 @@
     border-top: 1px solid rgba(0,238,255,0.08);
     overflow: hidden;
     height: 100%;
+    min-height: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -16,6 +17,7 @@
 /* When inside combined-section */
 .combined-section .footer {
     padding: 1.2rem 6% 1rem;
+    min-height: 30vh;
 }
 
 /* Subtle glow */
@@ -236,13 +238,19 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-    .footer { padding: 1.5rem 5% 1.2rem; }
+    .footer {
+        padding: 1.5rem 5% 1.2rem;
+        min-height: 35vh;
+    }
     .footer-name { font-size: clamp(2.5rem, 14vw, 5rem); }
     .footer-social-row { gap: 1.4rem; }
     .footer-social-icon { width: 34px; height: 34px; font-size: 1.2rem; }
 }
 
 @media (max-width: 480px) {
+    .footer {
+        min-height: 30vh;
+    }
     .footer-name { font-size: clamp(2rem, 12vw, 4rem); }
     .footer-tagline { font-size: 1rem; }
     .footer-top { flex-wrap: wrap; gap: 0.8rem; }

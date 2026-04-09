@@ -105,6 +105,21 @@ body {
     scroll-behavior: smooth;
 }
 
+/* Disable scroll snapping and fixed height on mobile */
+@media (max-width: 900px) {
+    html, body {
+        height: auto;
+        min-height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    body {
+        scroll-snap-type: none;
+        overflow-y: visible;
+        position: relative;
+    }
+}
+
 /* ============================================
    TYPOGRAPHY SCALE
    ============================================ */
@@ -158,6 +173,15 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+@media (max-width: 900px) {
+    section {
+        min-height: auto;
+        height: auto;
+        scroll-snap-align: none;
+        scroll-margin-top: 0;
+    }
 }
 
 /* Home section */
@@ -358,25 +382,57 @@ section {
    RESPONSIVE FONT SCALING
    ============================================ */
 @media (max-width: 991px) {
-    section { padding: 5rem 5% 3rem; }
+    section { padding: 6rem 5% 4rem; }
 }
 
 @media (max-width: 768px) {
     html { font-size: 56%; }
-    section { padding: 4.5rem 4% 2rem; }
+    section { padding: 5rem 6% 3rem; }
 }
 
 @media (max-width: 450px) {
     html { font-size: 50%; }
-    section { padding: 4rem 4% 1.5rem; }
+    section { padding: 4rem 5% 2rem; }
 }
 
 /* ============================================
    REDUCED MOTION
    ============================================ */
+
+/* 3D Model Loading Spinner */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.model-loading-spinner {
+    animation: spin 1s linear infinite;
+}
+
+/* Optimize 3D model containers */
+.rabbit-3d-model,
+.educat-3d-model {
+    position: relative;
+    contain: layout style paint;
+}
+
+/* Progressive loading fade-in */
+.model-fade-in {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
+    }
+    
+    .model-loading-spinner {
+        animation: none;
     }
 }

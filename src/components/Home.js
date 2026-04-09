@@ -5,6 +5,8 @@ import MarqueeStrip from './MarqueeStrip';
 import Educat3DModel from './Educat3DModel';
 
 import Rabbit3DModel from './Rabbit3DModel';
+import Cat from './Cat';
+import Pet from './Pet';
 
 import '../styles/Home.css';
 
@@ -60,6 +62,11 @@ const Home = () => {
 
             <div className="hero-container">
                 <div className="hero-content">
+                    {/* Mobile-only Rabbit at the top */}
+                    <div className="hero-mobile-rabbit stagger-item">
+                        <Rabbit3DModel />
+                    </div>
+
                     <div className="hero-header-row">
                         <div className="hero-header-text">
                             {/* Eyebrow */}
@@ -107,6 +114,16 @@ const Home = () => {
                         <div className="stat">
                             <span className="stat-number glow-text">∞</span>
                             <span className="stat-label">Curiosity</span>
+                        </div>
+                    </div>
+
+                    {/* Small Pets */}
+                    <div className="small-pets-row stagger-item stagger-delay-6">
+                        <div className="small-pet-container">
+                            <Cat />
+                        </div>
+                        <div className="small-pet-container">
+                            <Pet />
                         </div>
                     </div>
 

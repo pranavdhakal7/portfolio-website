@@ -298,51 +298,39 @@
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 900px) {
+    .skills-education {
+        padding: 5rem 6% 3rem;
+        height: auto;
+        min-height: auto;
+        overflow: visible;
+    }
+
     .combined-container {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
     .skills-education .heading {
-        font-size: 3rem;
+        font-size: 2.8rem;
+        margin-bottom: 2.5rem;
     }
-}
-
-@media (max-width: 768px) {
-    .skills-education {
-        padding: 4rem 5%;
-    }
-
-    .skills-education .heading {
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
-    }
-
-    .section-header h3 {
-        font-size: 1.8rem;
+    
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 1rem;
     }
 
     .highlight-stats {
         grid-template-columns: 1fr;
     }
-
-    .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    }
 }
 
 @media (max-width: 480px) {
-
-    .skills-box,
-    .education-box {
-        padding: 1.5rem;
+    .skills-box, .education-box {
+        padding: 1.8rem;
     }
-
     .stat-value {
         font-size: 1.8rem;
-    }
-
-    .university-info h4 {
-        font-size: 1.5rem;
     }
 }

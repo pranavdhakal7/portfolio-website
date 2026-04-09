@@ -1,5 +1,32 @@
 /* App.css — global overrides */
 
+.App {
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 900px) {
+    .App {
+        height: auto;
+        overflow-y: auto;
+    }
+    
+    section {
+        position: relative !important;
+        height: auto !important;
+        min-height: auto !important;
+        z-index: 10 !important;
+        display: block !important; /* Force block to prevent flex overlaps */
+        margin-bottom: 0;
+        padding-top: 6rem !important;
+        padding-bottom: 4rem !important;
+    }
+}
+
 /* ── Combined snap section (Awards + Contact on one screen) ── */
 .combined-section {
     display: flex;
@@ -16,9 +43,17 @@
     scroll-margin-top: 100px;
 }
 
+@media (max-width: 900px) {
+    .combined-section {
+        height: auto;
+        overflow: visible;
+        display: block; /* Stack naturally */
+    }
+}
+
 .combined-section > section,
 .combined-section > footer {
-    /* Each child takes exactly half the available height */
+    /* Each child takes exactly half the available height on desktop */
     height: 50%;
     min-height: 0;
     flex: 1;
@@ -31,6 +66,17 @@
     overflow: visible;
     overflow-x: hidden;
     padding: 1rem 9% 0;
+}
+
+@media (max-width: 900px) {
+    .combined-section > section,
+    .combined-section > footer {
+        height: auto !important;
+        min-height: 50vh;
+        flex: none;
+        display: block;
+        padding: 5rem 6% 3rem;
+    }
 }
 
 .combined-section > section:last-child,

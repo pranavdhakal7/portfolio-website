@@ -64,6 +64,57 @@ const cardInfo = [
     { icon: '🚀', label: 'Freelance', value: 'Available' },
 ];
 
+const ProfileCard = () => (
+    <div className="alien-device">
+        <div className="alien-device-inner">
+            <div className="alien-topbar">
+                <div className="alien-topbar-dots">
+                    <span className="alien-dot alien-dot--red" />
+                    <span className="alien-dot alien-dot--yellow" />
+                    <span className="alien-dot alien-dot--green" />
+                </div>
+                <span className="alien-topbar-title">PROFILE.SYS</span>
+                <span className="alien-topbar-status">● ONLINE</span>
+            </div>
+
+            <div className="alien-photo-box">
+                <img
+                    src="/assets/images/profile2.jpg"
+                    alt="Pranav Dhakal"
+                    className="alien-photo"
+                    draggable="false"
+                />
+                <div className="alien-corner alien-corner--tl" />
+                <div className="alien-corner alien-corner--tr" />
+                <div className="alien-corner alien-corner--bl" />
+                <div className="alien-corner alien-corner--br" />
+                <div className="alien-photo-name">
+                    <span className="badge-dot" />
+                    Pranav Dhakal
+                </div>
+            </div>
+
+            <div className="alien-subtitle">
+                <span className="alien-type-badge">⚡ Full-Stack Developer</span>
+                <span className="alien-hp">HP ∞</span>
+            </div>
+
+            <div className="alien-info-grid">
+                {cardInfo.map((item, i) => (
+                    <div className="alien-info-cell" key={i}>
+                        <span className="alien-info-icon">{item.icon}</span>
+                        <div className="alien-info-text">
+                            <span className="alien-info-label">{item.label}</span>
+                            <span className="alien-info-value">{item.value}</span>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+        <div className="alien-holo" />
+    </div>
+);
+
 const About = () => (
     <section className="about" id="about">
         {/* ── LEFT: Bio + Expertise + Experience ── */}
@@ -74,6 +125,11 @@ const About = () => (
                 I turn <em>complex ideas</em><br />
                 into elegant code.
             </h2>
+
+            {/* Mobile-only Profile Card */}
+            <div className="mobile-profile-container">
+                <ProfileCard />
+            </div>
 
             <p className="about-bio stagger-item stagger-delay-2">
                 Hello! I'm <strong>Pranav Dhakal</strong>, a Computer Science &amp; Mathematics
@@ -129,54 +185,7 @@ const About = () => (
 
         {/* ── RIGHT: Alien Tech Display ── */}
         <div className="about-right stagger-item stagger-delay-2">
-            <div className="alien-device">
-                <div className="alien-device-inner">
-                    <div className="alien-topbar">
-                        <div className="alien-topbar-dots">
-                            <span className="alien-dot alien-dot--red" />
-                            <span className="alien-dot alien-dot--yellow" />
-                            <span className="alien-dot alien-dot--green" />
-                        </div>
-                        <span className="alien-topbar-title">PROFILE.SYS</span>
-                        <span className="alien-topbar-status">● ONLINE</span>
-                    </div>
-
-                    <div className="alien-photo-box">
-                        <img
-                            src="/assets/images/profile2.jpg"
-                            alt="Pranav Dhakal"
-                            className="alien-photo"
-                            draggable="false"
-                        />
-                        <div className="alien-corner alien-corner--tl" />
-                        <div className="alien-corner alien-corner--tr" />
-                        <div className="alien-corner alien-corner--bl" />
-                        <div className="alien-corner alien-corner--br" />
-                        <div className="alien-photo-name">
-                            <span className="badge-dot" />
-                            Pranav Dhakal
-                        </div>
-                    </div>
-
-                    <div className="alien-subtitle">
-                        <span className="alien-type-badge">⚡ Full-Stack Developer</span>
-                        <span className="alien-hp">HP ∞</span>
-                    </div>
-
-                    <div className="alien-info-grid">
-                        {cardInfo.map((item, i) => (
-                            <div className="alien-info-cell" key={i}>
-                                <span className="alien-info-icon">{item.icon}</span>
-                                <div className="alien-info-text">
-                                    <span className="alien-info-label">{item.label}</span>
-                                    <span className="alien-info-value">{item.value}</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div className="alien-holo" />
-            </div>
+            <ProfileCard />
         </div>
     </section>
 );

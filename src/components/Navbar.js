@@ -10,7 +10,6 @@ const NAV_ITEMS = [
     { id: 'education', label: 'Education' },
     { id: 'work', label: 'Projects' },
     { id: 'awards', label: 'Awards' },
-    { id: 'experience', label: 'Experience' },
     { id: 'contact', label: 'Contact' },
 ];
 

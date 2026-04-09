@@ -374,98 +374,44 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
+    .contact {
+        padding: 5rem 6% 3rem;
+        height: auto;
+        min-height: auto;
+    }
+
     .contact-inner {
         grid-template-columns: 1fr;
-        gap: 5rem;
+        gap: 4rem;
     }
 
     .contact-left {
         position: static;
-    }
-
-    .contact-headline {
-        font-size: clamp(3.2rem, 6vw, 5rem);
-    }
-    
-    /* Combined section adjustments */
-    .combined-section .contact-inner {
-        gap: 3rem;
-    }
-    
-    .combined-section .contact-headline {
-        font-size: clamp(2.5rem, 4vw, 4rem);
-    }
-}
-
-@media (max-width: 680px) {
-    .contact {
-        padding: 8rem 5%;
+        order: 1;
     }
 
     .contact-right {
-        padding: 2.8rem 2.2rem;
+        order: 2;
+        padding: 2.5rem 2rem;
     }
 
     .cform-grid {
         grid-template-columns: 1fr;
     }
-    
-    /* Combined section adjustments */
-    .combined-section .contact {
-        padding: 4rem 5% 2rem;
+
+    .contact-headline {
+        font-size: 2.8rem;
     }
-    
-    .combined-section .contact-right {
-        padding: 2rem 1.8rem;
-    }
-    
-    .combined-section .contact-inner {
-        gap: 2.5rem;
-    }
-    
-    .combined-section .clink {
-        padding: 1rem 1.2rem;
-        grid-template-columns: 2.5rem 1fr auto;
-    }
-    
-    .combined-section .clink-icon {
-        width: 2.5rem;
-        height: 2.5rem;
-        font-size: 1rem;
-    }
-    
-    .combined-section .soc-btn {
-        width: 3.2rem;
-        height: 3.2rem;
-        font-size: 1.3rem;
+
+    .contact-blurb {
+        font-size: 1.4rem;
+        max-width: 100%;
     }
 }
 
 @media (max-width: 480px) {
     .contact-right {
-        padding: 2.2rem 1.8rem;
-    }
-    
-    /* Combined section adjustments */
-    .combined-section .contact {
-        padding: 3rem 5% 1.5rem;
-    }
-    
-    .combined-section .contact-right {
-        padding: 1.8rem 1.5rem;
-    }
-    
-    .combined-section .contact-headline {
-        font-size: clamp(2rem, 3.5vw, 3rem);
-    }
-    
-    .combined-section .contact-blurb {
-        font-size: 1.2rem;
-    }
-    
-    .combined-section .cform-input {
-        padding: 0.8rem 1rem;
-        font-size: 1.2rem;
+        padding: 2rem 1.5rem;
     }
 }

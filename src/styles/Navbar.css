@@ -8,7 +8,7 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 9000;
+    z-index: 100001;
     padding: 2rem 0;
     transition: padding 0.35s ease, background 0.35s ease, box-shadow 0.35s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     /* Dynamic scroll-based properties */
@@ -64,14 +64,13 @@
 
 /* ── Logo ── */
 .navbar-logo {
-    font-size: 2rem;
-    font-weight: 900;
-    letter-spacing: -0.5px;
-    color: var(--text-dark);
-    text-decoration: none;
-    font-family: "Space Grotesk", sans-serif;
-    transition: color 0.2s;
     flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+    .navbar-logo {
+        font-size: 1.6rem;
+    }
 }
 
 .navbar-logo:hover {
@@ -190,8 +189,10 @@
     font-size: 1.35rem;
     font-weight: 700;
     border-radius: 10px;
-    background: rgba(0, 238, 255, 0.05);
-    border: 1.5px solid rgba(0, 238, 255, 0.38);
+    background: rgba(0, 238, 255, 0.08); /* Better visibility */
+    border: 1px solid rgba(0, 238, 255, 0.2);
+    cursor: pointer;
+    z-index: 100003; /* Highest level for toggle */
     color: var(--primary-color);
     text-decoration: none;
     transition: var(--transition);
@@ -260,16 +261,18 @@
     top: calc(100% + 0.8rem);
     left: 4%;
     right: 4%;
-    background: rgba(4, 5, 20, 0.92);
+    background: #040514; /* Solid background on mobile */
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(0, 238, 255, 0.12);
+    border: 1px solid rgba(0, 238, 255, 0.25);
     border-radius: 20px;
-    padding: 1.4rem;
+    padding: 1.8rem;
     opacity: 0;
     transform: translateY(-8px);
     pointer-events: none;
     transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 100002;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
 }
 
 .mobile-drawer--open {
@@ -328,6 +331,15 @@
 
     .mobile-drawer {
         display: flex;
+    }
+
+    .resume-btn {
+        display: none;
+    }
+
+    .navbar-inner {
+        padding: 0 5%;
+        gap: 0.5rem;
     }
 }
 
