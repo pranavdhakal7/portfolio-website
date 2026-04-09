@@ -4,9 +4,11 @@ import StickyNote from './StickyNote';
 import MarqueeStrip from './MarqueeStrip';
 import '../styles/Home.css';
 import '../styles/Marquee.css';
-import Rabbit3DModel from './Rabbit3DModel';
+// import Rabbit3DModel from './Rabbit3DModel';
 const Home = () => {
     const typedRef = useRef(null);
+
+
 
 
     useEffect(() => {
@@ -18,10 +20,14 @@ const Home = () => {
         });
 
 
+
+
         return () => {
             typed.destroy();
         };
     }, []);
+
+
 
 
     return (
@@ -30,7 +36,8 @@ const Home = () => {
             <div className="hero-container">
                 <div className="hero-content">
                     <div className="hero-model-wrapper">
-                        <Rabbit3DModel />
+                        {/* <Rabbit3DModel /> */}
                     </div>
                     {/* Eyebrow */}
                     <div className="matrix-intro stagger-item stagger-delay-1">
+
