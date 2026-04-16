@@ -2,11 +2,11 @@ import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 const FOOD_TYPES = [
-  { emoji: '🍖', color: '#ff6b6b', weight: 25, name: 'meat' },
-  { emoji: '🎂', color: '#ffb6c1', weight: 20, name: 'cake' },
-  { emoji: '🍫', color: '#8b4513', weight: 20, name: 'choc' },
-  { emoji: '🍇', color: '#9370db', weight: 20, name: 'grape' },
-  { emoji: '🦴', color: '#f5deb3', weight: 15, name: 'bone' },
+  { emoji: '\u{1F356}', color: '#ff6b6b', weight: 25, name: 'meat' },
+  { emoji: '\u{1F382}', color: '#ffb6c1', weight: 20, name: 'cake' },
+  { emoji: '\u{1F36B}', color: '#8b4513', weight: 20, name: 'choc' },
+  { emoji: '\u{1F347}', color: '#9370db', weight: 20, name: 'grape' },
+  { emoji: '\u{1F9B4}', color: '#f5deb3', weight: 15, name: 'bone' },
 ];
 
 function randFood() {
@@ -26,11 +26,10 @@ export default function Pet(props) {
     const container = containerRef.current;
     if (!container) return;
 
-    // Check for mobile and hide if screen is small
     const isMobile = window.innerWidth <= 900;
     const petScale = isMobile ? 0.45 : 0.6;
 
-    // Make container fixed at bottom unless inline
+    container.innerHTML = '';
     if (props.inline) {
       container.style.position = 'absolute';
       container.style.bottom = '0';
@@ -43,14 +42,14 @@ export default function Pet(props) {
       container.style.bottom = '0';
       container.style.left = '0';
       container.style.width = '100%';
-      container.style.height = isMobile ? '120px' : '180px';
+      container.style.height = isMobile ? '100px' : '130px';
       if (isMobile) {
-        container.style.transform = 'scale(0.85)';
+        container.style.transform = 'scale(0.7)';
         container.style.transformOrigin = 'bottom center';
       }
     }
-    container.style.pointerEvents = props.inline ? 'none' : 'auto';
-    container.style.zIndex = props.inline ? '10' : '10000';
+    container.style.pointerEvents = 'none';
+    container.style.zIndex = props.inline ? '10' : '50';
     container.style.overflow = 'visible';
 
     // ── State ──────────────────────────────────────────────────────────────
@@ -66,13 +65,11 @@ export default function Pet(props) {
     const fallingEls = {};
     const foodEls = {};
 
-
-
     // Score display
     const scoreEl = document.createElement('div');
     scoreEl.style.cssText = `position:absolute;top:12px;left:16px;background:rgba(255,255,255,0.85);
       border-radius:20px;padding:6px 16px;font-size:0.85rem;font-weight:600;color:#333;z-index:50;pointer-events:auto;`;
-    scoreEl.textContent = '🍖 Fed: 0';
+    scoreEl.textContent = '\u{1F356} Fed: 0';
     container.appendChild(scoreEl);
     let fedCount = 0;
 
@@ -187,7 +184,7 @@ export default function Pet(props) {
 
     // ── Feed Button ────────────────────────────────────────────────────────
     const btn = document.createElement('button');
-    btn.textContent = '🎁 Drop Food!';
+    btn.textContent = '\u{1F381} Drop Food!';
     btn.style.cssText = `
       position:absolute;padding:10px 22px;font-size:0.88rem;cursor:pointer;
       background:linear-gradient(135deg,#ff9a56,#ff6b6b);border:none;
@@ -211,20 +208,14 @@ export default function Pet(props) {
     }
 
     function dropFood() {
-      console.log('dropFood called');
       const f = randFood();
-      console.log('Selected food:', f);
       const pad = 90;
       const width = sw();
-      console.log('Container width:', width);
       const x = pad + Math.random() * (width - 2 * pad);
-      console.log('Food position x:', x);
       const foodId = uid();
       fallingFoods.push({ id: foodId, x, y: -50, type: f, rotation: Math.random() * 360 });
-      console.log('Added to fallingFoods, total:', fallingFoods.length);
-      // Visual feedback
       const originalText = btn.textContent;
-      btn.textContent = '🎁 Dropped!';
+      btn.textContent = '\u{1F381} Dropped!';
       btn.style.background = 'linear-gradient(135deg,#56ff9a,#6bff6b)';
       setTimeout(() => {
         btn.textContent = originalText;
@@ -252,19 +243,19 @@ export default function Pet(props) {
       if (foodEls[food.id]) { foodEls[food.id].remove(); delete foodEls[food.id]; }
 
       fedCount++;
-      scoreEl.textContent = `🍖 Fed: ${fedCount}`;
+      scoreEl.textContent = `\u{1F356} Fed: ${fedCount}`;
 
       const mx = dog.facingRight ? dog.x + 82 : dog.x + 18;
       const my = dog.y + 28;
       for (let i = 0; i < 6; i++)
         spawnParticle(mx + (Math.random() - .5) * 30, my + (Math.random() - .5) * 15,
-          '✨', (Math.random() - .5) * 4, -2 - Math.random() * 3, 40);
+          '\u2728', (Math.random() - .5) * 4, -2 - Math.random() * 3, 40);
       spawnParticle(mx, my - 20, food.type.emoji, 0, -3, 30, true);
 
       setTimeout(() => {
         dog.eating = false;
         dog.happy = true;
-        const hEmoji = food.type.name === 'choc' ? '😋' : food.type.name === 'grape' ? '🥰' : '❤️';
+        const hEmoji = food.type.name === 'choc' ? '\u{1F60B}' : food.type.name === 'grape' ? '\u{1F970}' : '\u2764\uFE0F';
         for (let i = 0; i < 5; i++)
           spawnParticle(dog.x + 25 + Math.random() * 55, dog.y - 25, hEmoji,
             (Math.random() - .5) * 2.5, -1.5 - Math.random(), 55);
@@ -303,7 +294,7 @@ export default function Pet(props) {
         dmouth.style.background = 'transparent';
       }
 
-      // Button tracks dog — always above the dog's head
+      // Button tracks dog
       btn.style.left = (dog.x + DOG_W / 2) + 'px';
       btn.style.top = (dog.y - 58) + 'px';
     }
@@ -324,12 +315,10 @@ export default function Pet(props) {
         f.rotation += 5;
 
         if (f.y >= GROUND_Y + 14) {
-          // Land
           foods.push({ id: f.id, x: f.x, y: GROUND_Y + 10, type: f.type });
           if (fallingEls[f.id]) { fallingEls[f.id].remove(); delete fallingEls[f.id]; }
           fallingFoods.splice(i, 1);
 
-          // Create landed food element
           const el = document.createElement('div');
           el.textContent = f.type.emoji;
           el.style.cssText = `position:absolute;font-size:2.2rem;pointer-events:none;z-index:55;
@@ -340,7 +329,6 @@ export default function Pet(props) {
           container.appendChild(el);
           foodEls[f.id] = el;
         } else {
-          // Still falling
           if (!fallingEls[f.id]) {
             const el = document.createElement('div');
             el.textContent = f.type.emoji;
@@ -359,7 +347,6 @@ export default function Pet(props) {
       if (!dog.eating && dog.walking) {
         let targetX = null;
 
-        // Find nearest food
         if (!dog.target && foods.length > 0) {
           let nearest = null, dist = Infinity;
           foods.forEach(f => {
@@ -375,7 +362,6 @@ export default function Pet(props) {
           else { targetX = tf.x - DOG_W / 2; }
         }
 
-        // Patrol if no food
         if (targetX === null) {
           if (walkDir === 1) {
             targetX = W - DOG_W - PAD;

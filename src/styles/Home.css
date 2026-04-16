@@ -79,18 +79,20 @@
 /* ── Small Pets ── */
 .small-pets-row {
     display: flex;
-    justify-content: center;
-    gap: 3rem;
-    margin-top: 0.5rem;
+    justify-content: flex-start;
+    gap: 4rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
     padding: 0.5rem;
     flex-wrap: wrap;
 }
 
 .small-pet-container {
-    width: 120px;
-    height: 120px;
+    width: 180px;
+    height: 140px;
     position: relative;
-    filter: drop-shadow(0 0 10px rgba(0, 238, 255, 0.3));
+    overflow: visible;
+    filter: drop-shadow(0 0 8px rgba(0, 238, 255, 0.2));
 }
 
 /* ── Eyebrow label ── */
@@ -203,10 +205,10 @@
 /* ── Stats row ── */
 .matrix-stats {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 3.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     flex-wrap: wrap;
 }
 
@@ -242,9 +244,9 @@
 /* ── CTA Buttons ── */
 .matrix-actions {
     display: flex;
-    gap: 0.8rem;
+    gap: 1.2rem;
     justify-content: flex-start;
-    margin-top: -0.5rem;
+    margin-top: 0;
     margin-bottom: 3rem;
     flex-wrap: wrap;
 }
@@ -550,8 +552,9 @@
     }
 
     .small-pet-container {
-        width: 85px; /* Shrink pets for mobile */
-        height: 85px;
+        width: 140px; /* Shrink pets for mobile */
+        height: 120px;
+        overflow: visible;
     }
 }
 

@@ -120,7 +120,24 @@ function Lights() {
   );
 }
 
-export default function Educat3DModel({ className = '', style = {} }) {
+function MobileFallback({ className, style }) {
+  return (
+    <div className={className} style={style}>
+      <div style={{ 
+        width: '100%', 
+        height: '100%', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        fontSize: '4rem'
+      }}>
+        🎓
+      </div>
+    </div>
+  );
+}
+
+function Educat3DModelInner({ className = '', style = {} }) {
   const modelUrl = '/assets/images/educat/37.glb';
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -284,4 +301,23 @@ export default function Educat3DModel({ className = '', style = {} }) {
       )}
     </div>
   );
+}
+
+export default function Educat3DModel({ className = '', style = {} }) {
+  const [isMobile, setIsMobile] = useState(null);
+  
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 900);
+    const handleResize = () => setIsMobile(window.innerWidth <= 900);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  if (isMobile === null) return null;
+  
+  if (isMobile) {
+    return <MobileFallback className={`educat-3d-model ${className}`} style={style} />;
+  }
+  
+  return <Educat3DModelInner className={className} style={style} />;
 }

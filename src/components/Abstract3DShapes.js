@@ -13,33 +13,35 @@ const Abstract3DShapes = () => {
         let animationId;
         let t = 0;
 
-        // Mouse tracking
-        const mouse = { x: -9999, y: -9999 };
+        const mouse = { x: width / 2, y: height / 2 };
         const REPEL_RADIUS = 120;
-        const REPEL_STRENGTH = 6;
+        const REPEL_STRENGTH = 8;
+
+        const isMobile = window.innerWidth <= 900;
 
         const onMouseMove = (e) => {
             mouse.x = e.clientX;
             mouse.y = e.clientY;
         };
-        const onMouseLeave = () => {
-            mouse.x = -9999;
-            mouse.y = -9999;
-        };
 
-        window.addEventListener('mousemove', onMouseMove);
-        window.addEventListener('mouseleave', onMouseLeave);
+        const onMouseLeave = () => {
+            mouse.x = width / 2;
+            mouse.y = height / 2;
+        };
 
         const resize = () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
         };
+
+        window.addEventListener('mousemove', onMouseMove);
+        window.addEventListener('mouseleave', onMouseLeave);
         window.addEventListener('resize', resize);
 
         // ── Torus Knot wireframe ──────────────────────────────────────────────
         const p = 2, q = 3;
-        const steps = 220;
-        const tubeSegs = 18;
+        const steps = isMobile ? 80 : 220;
+        const tubeSegs = isMobile ? 10 : 18;
         const R = 210, r = 70;  // bigger knot
 
         const project = (x, y, z, fov = 680) => {
@@ -268,7 +270,34 @@ const Abstract3DShapes = () => {
 
         draw();
 
+        const pauseAnimation = () => {
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+        };
+
+        const resumeAnimation = () => {
+            if (!animationId) {
+                animationId = requestAnimationFrame(draw);
+            }
+        };
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    resumeAnimation();
+                } else {
+                    pauseAnimation();
+                }
+            },
+            { threshold: 0 }
+        );
+        observer.observe(canvas);
+
         return () => {
+            pauseAnimation();
+            observer.disconnect();
             cancelAnimationFrame(animationId);
             window.removeEventListener('mousemove', onMouseMove);
             window.removeEventListener('mouseleave', onMouseLeave);

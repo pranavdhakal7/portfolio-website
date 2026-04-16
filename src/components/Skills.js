@@ -45,7 +45,6 @@ const Skills = () => {
     }));
 
     const filtered = active === 'All' ? skills : skills.filter(s => s.cat === active);
-    console.log('Skills active:', active, 'filtered count:', filtered.length, 'categories:', skills.map(s => s.cat));
 
     // Ensure newly filtered items become visible
     useEffect(() => {

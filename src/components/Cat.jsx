@@ -29,14 +29,14 @@ export default function FishCat(props) {
       container.style.bottom = '0';
       container.style.left = '0';
       container.style.width = '100%';
-      container.style.height = isMobile ? '120px' : '180px';
+      container.style.height = isMobile ? '100px' : '130px';
       if (isMobile) {
-        container.style.transform = 'scale(0.85)';
+        container.style.transform = 'scale(0.7)';
         container.style.transformOrigin = 'bottom center';
       }
     }
-    container.style.pointerEvents = props.inline ? 'none' : 'auto';
-    container.style.zIndex = props.inline ? '90' : '99999';
+    container.style.pointerEvents = 'none';
+    container.style.zIndex = props.inline ? '10' : '50';
     container.style.overflow = 'visible';
 
     let idN = 0;
@@ -199,6 +199,8 @@ export default function FishCat(props) {
     btn.onmouseleave = () => { btn.style.boxShadow = '0 4px 14px rgba(30,144,255,0.45)'; btn.style.transform = 'translateX(-50%) scale(1)'; };
     btn.onmousedown = () => { btn.style.transform = 'translateX(-50%) scale(0.94)'; };
     btn.onmouseup = () => { btn.style.transform = 'translateX(-50%) scale(1.04)'; };
+    btn.ontouchstart = (e) => { e.stopPropagation(); btn.style.transform = 'translateX(-50%) scale(0.94)'; };
+    btn.ontouchend = (e) => { e.stopPropagation(); btn.style.transform = 'translateX(-50%) scale(1.04)'; };
     btn.onclick = dropFood;
     container.appendChild(btn);
 

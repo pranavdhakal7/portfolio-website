@@ -11,13 +11,17 @@ const CustomCursor = () => {
     const ringRef = useRef(null);
 
     useEffect(() => {
+        const isMobile = window.innerWidth <= 900;
+        if (isMobile) return;
+
         const dot  = dotRef.current;
         const ring = ringRef.current;
         if (!dot || !ring) return;
 
         let mx = window.innerWidth  / 2;
         let my = window.innerHeight / 2;
-        let rx = mx, ry = my;
+        let rx = mx;
+        let ry = my;
         let raf;
 
         const onMove = (e) => {

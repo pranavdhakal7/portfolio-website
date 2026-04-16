@@ -3,6 +3,46 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, Environment, Float, PerspectiveCamera, Html } from '@react-three/drei';
 import * as THREE from 'three';
 
+function MobileFallback({ className, style }) {
+  return (
+    <div className={className} style={{
+      ...style,
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
+      <div style={{
+        width: '100%',
+        height: '100%',
+        borderRadius: '50%',
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'radial-gradient(circle, rgba(0,238,255,0.08) 0%, rgba(128,0,255,0.04) 50%, transparent 70%)',
+        border: '2px solid rgba(0,238,255,0.25)',
+        boxShadow: '0 0 40px rgba(0,238,255,0.2), 0 0 80px rgba(128,0,255,0.15), inset 0 0 30px rgba(0,238,255,0.1)',
+        position: 'relative',
+      }}>
+        <img
+          src="/assets/images/hero.gif"
+          alt="Rabbit 3D Model"
+          draggable="false"
+          style={{
+            width: '110%',
+            height: '110%',
+            objectFit: 'cover',
+            borderRadius: '50%',
+            filter: 'brightness(1.05) contrast(1.05)',
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
 // Preload the model to improve perceived performance
 const preloadModel = (url) => {
   return useGLTF.preload(url);
@@ -108,7 +148,7 @@ function Lights() {
   );
 }
 
-export default function Rabbit3DModel({ className = '', style = {} }) {
+function Rabbit3DModelInner({ className = '', style = {} }) {
   const modelUrl = '/assets/images/educat/rabbit.glb';
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -148,5 +188,24 @@ export default function Rabbit3DModel({ className = '', style = {} }) {
       </Canvas>
     </div>
   );
+}
+
+export default function Rabbit3DModel({ className = '', style = {} }) {
+  const [isMobile, setIsMobile] = useState(null);
+  
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 900);
+    const handleResize = () => setIsMobile(window.innerWidth <= 900);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  if (isMobile === null) return null;
+  
+  if (isMobile) {
+    return <MobileFallback className={`rabbit-3d-model ${className}`} style={style} />;
+  }
+  
+  return <Rabbit3DModelInner className={className} style={style} />;
 }
 

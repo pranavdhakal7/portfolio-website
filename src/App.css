@@ -20,7 +20,7 @@
         height: auto !important;
         min-height: auto !important;
         z-index: 10 !important;
-        display: block !important; /* Force block to prevent flex overlaps */
+        display: block !important;
         margin-bottom: 0;
         padding-top: 6rem !important;
         padding-bottom: 4rem !important;
@@ -47,13 +47,12 @@
     .combined-section {
         height: auto;
         overflow: visible;
-        display: block; /* Stack naturally */
+        display: block;
     }
 }
 
 .combined-section > section,
 .combined-section > footer {
-    /* Each child takes exactly half the available height on desktop */
     height: 50%;
     min-height: 0;
     flex: 1;
@@ -85,18 +84,6 @@
     padding-bottom: 1rem;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #000008; }
-::-webkit-scrollbar-thumb { background: #0088ff; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #00eeff; }
-
-/* Selection */
-::selection { background: rgba(0,238,255,0.28); color: #fff; }
-
-/* Body - scroll snapping handled in index.css */
-/* No need to duplicate body styles here */
-
 /* Glassmorphism sections */
 section {
     position: relative;
@@ -106,59 +93,6 @@ section {
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(0,238,255,0.07);
 }
-
-/* Gradient text */
-.gradient-text {
-    background: linear-gradient(135deg, #00eeff 0%, #0088ff 40%, #8000ff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    background-size: 200% auto;
-    animation: gradient-shift 4s ease infinite;
-}
-
-@keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50%       { background-position: 100% 50%; }
-}
-
-/* Glow utility */
-.glow {
-    filter: drop-shadow(0 0 10px rgba(0,238,255,0.55));
-}
-
-/* Pulse */
-@keyframes matrix-pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50%       { transform: scale(1.02); opacity: 0.9;
-                text-shadow: 0 0 8px rgba(0,238,255,0.8); }
-}
-.matrix-pulse { animation: matrix-pulse 2s ease-in-out infinite; }
-
-/* Generic btn — fallback for components using .btn directly */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    padding: 1.2rem 3rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-    border-radius: var(--border-radius-full, 9999px);
-    cursor: pointer;
-    transition: var(--transition);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    background: transparent;
-    color: var(--primary-color);
-    border: 1.5px solid var(--primary-color) !important;
-}
-.btn:hover {
-    transform: translateY(-3px);
-    background: rgba(0,238,255,0.10);
-    box-shadow: 0 0 20px rgba(0,238,255,0.35);
-}
-.btn:active { transform: translateY(-1px); }
 
 /* Scroll snap is already set in index.css on body with mandatory */
 /* No need to duplicate settings here */

@@ -3,13 +3,8 @@ import Typed from 'typed.js';
 import StickyNote from './StickyNote';
 import MarqueeStrip from './MarqueeStrip';
 import Educat3DModel from './Educat3DModel';
-
 import Rabbit3DModel from './Rabbit3DModel';
-import Cat from './Cat';
-import Pet from './Pet';
-
 import '../styles/Home.css';
-
 import '../styles/Marquee.css';
 
 const Home = () => {
@@ -62,10 +57,6 @@ const Home = () => {
 
             <div className="hero-container">
                 <div className="hero-content">
-                    {/* Mobile-only Rabbit at the top */}
-                    <div className="hero-mobile-rabbit stagger-item">
-                        <Rabbit3DModel />
-                    </div>
 
                     <div className="hero-header-row">
                         <div className="hero-header-text">
@@ -117,16 +108,6 @@ const Home = () => {
                         </div>
                     </div>
 
-                    {/* Small Pets */}
-                    <div className="small-pets-row stagger-item stagger-delay-6">
-                        <div className="small-pet-container">
-                            <Cat />
-                        </div>
-                        <div className="small-pet-container">
-                            <Pet />
-                        </div>
-                    </div>
-
                     {/* CTA row */}
                     <div className="matrix-actions stagger-item stagger-delay-7">
                         <button className="matrix-btn primary" onClick={() => scrollTo('work')}>
@@ -136,12 +117,6 @@ const Home = () => {
                         <button className="matrix-btn secondary" onClick={() => scrollTo('contact')}>
                             Let's Talk
                         </button>
-                    </div>
-
-                    {/* Scroll hint */}
-                    <div className="matrix-scroll stagger-item stagger-delay-8">
-                        <span>Scroll</span>
-                        <div className="scroll-arrow animate-bounce">↓</div>
                     </div>
                 </div>
 

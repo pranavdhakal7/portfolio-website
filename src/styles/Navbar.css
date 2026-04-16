@@ -40,17 +40,6 @@
     transform: translateY(0);
 }
 
-/* When scrolled — shrinks and adds frosted glass (backward compatibility) */
-.navbar--scrolled {
-    /* Override with full values for binary scroll detection */
-    padding: 1.4rem 0;
-    background: rgba(4, 5, 16, 0.75);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border-bottom: 1px solid rgba(0, 238, 255, 0.07);
-    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.45);
-}
-
 /* Inner row */
 .navbar-inner {
     max-width: 1400px;
@@ -155,22 +144,7 @@
     }
 }
 
-/* Smooth transition for active state change */
-.nav-link {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.55rem 1.3rem;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: rgba(180, 195, 230, 0.65);
-    text-decoration: none;
-    border-radius: 9999px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    font-family: "Space Grotesk", sans-serif;
-    white-space: nowrap;
-}
+
 
 /* ── Right actions ── */
 .navbar-actions {

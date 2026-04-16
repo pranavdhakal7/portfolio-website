@@ -42,7 +42,7 @@ const projects = [
         name: 'AI Text Detector',
         slug: 'NLP · Flask',
         image: 'jspro.PNG',
-        link: 'https://github.com/pranavdhakal7',
+        link: 'https://ai-text-detector-iota.vercel.app/',
         category: 'ai-ml',
         tech: ['Flask', 'Transformers', 'React'],
         stars: 39,
@@ -90,7 +90,6 @@ const CATS = [
 const Work = () => {
     const [active, setActive] = useState('all');
     const filtered = active === 'all' ? projects : projects.filter(p => p.category === active);
-    console.log('Active:', active, 'Filtered count:', filtered.length, 'Filtered projects:', filtered.map(p => p.name), 'All categories:', projects.map(p => p.category));
 
     // Ensure newly filtered items become visible
     useEffect(() => {
